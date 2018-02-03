@@ -1,0 +1,530 @@
+2018-02-03 17:42:52,794 :: INFO :: Settings Validation ::
+	Settings successfully imported and checked
+2018-02-03 17:42:52,794 :: INFO :: BATMAN main ::
+	
+ /$$$$$$$   /$$$$$$  /$$$$$$$$ /$$      /$$  /$$$$$$  /$$   /$$
+| $$__  $$ /$$__  $$|__  $$__/| $$$    /$$$ /$$__  $$| $$$ | $$
+| $$  \ $$| $$  \ $$   | $$   | $$$$  /$$$$| $$  \ $$| $$$$| $$
+| $$$$$$$ | $$$$$$$$   | $$   | $$ $$/$$ $$| $$$$$$$$| $$ $$ $$
+| $$__  $$| $$__  $$   | $$   | $$  $$$| $$| $$__  $$| $$  $$$$
+| $$  \ $$| $$  | $$   | $$   | $$\  $ | $$| $$  | $$| $$\  $$$
+| $$$$$$$/| $$  | $$   | $$   | $$ \/  | $$| $$  | $$| $$ \  $$
+|_______/ |__/  |__/   |__/   |__/     |__/|__/  |__/|__/  \__/
+Bayesian Analysis Tool for Modelling and uncertAinty quaNtification
+
+2018-02-03 17:42:52,794 :: INFO :: BATMAN main ::
+	Branch: heads/master
+Last commit: 41ca976
+2018-02-03 17:42:52,794 :: DEBUG :: BATMAN main ::
+	cleaning : /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output
+2018-02-03 17:42:52,795 :: INFO :: batman.driver ::
+	Select data provider type "file"
+2018-02-03 17:42:52,795 :: DEBUG :: batman.tasks.provider_file ::
+	Job for snapshot file creation: {'context_directory': u'data', 'coupling_directory': u'batman-coupling', 'command': u'bash script.sh', 'clean': False}
+2018-02-03 17:42:52,797 :: INFO :: batman.space.space ::
+	Created 12 samples with the halton method
+2018-02-03 17:42:52,798 :: DEBUG :: batman.space.space ::
+	Points are:
+[[   37.5    3849.451]
+ [   26.25   4207.336]
+ [   48.75   3541.559]
+ [   20.625  3968.785]
+ [   43.125  4347.68 ]
+ [   31.875  3715.912]
+ [   54.375  4085.145]
+ [   17.812  4537.108]
+ [   40.312  3341.627]
+ [   29.062  3890.131]
+ [   51.562  4251.232]
+ [   23.438  3607.715]]
+2018-02-03 17:42:52,799 :: INFO :: batman.space.space ::
+	Discrepancy is 0.0526075969981
+2018-02-03 17:42:53,227 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,3005.01]
+2018-02-03 17:42:53,227 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,3005.01]
+2018-02-03 17:42:53,227 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,3005.01]
+2018-02-03 17:42:53,228 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,3005.01]
+2018-02-03 17:42:53,228 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,3005.01]
+2018-02-03 17:42:53,228 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,3005.01]
+2018-02-03 17:42:53,228 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,3005.01]
+2018-02-03 17:42:53,228 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,3005.01]
+2018-02-03 17:42:53,228 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,3005.01]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,3005.01]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,3252.94]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,3252.94]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,3252.94]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,3252.94]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,3252.94]
+2018-02-03 17:42:53,229 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,3252.94]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,3252.94]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,3252.94]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,3252.94]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,3252.94]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,3252.94]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,3526.69]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,3526.69]
+2018-02-03 17:42:53,230 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,3526.69]
+2018-02-03 17:42:53,231 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,3526.69]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,3526.69]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,3819.96]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,3819.96]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,3819.96]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,3819.96]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,3819.96]
+2018-02-03 17:42:53,232 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,3819.96]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,3819.96]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,3819.96]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,3819.96]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,3819.96]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,3819.96]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,4125.53]
+2018-02-03 17:42:53,233 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,4125.53]
+2018-02-03 17:42:53,234 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,4125.53]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,4125.53]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,4125.53]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,4435.72]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,4435.72]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,4435.72]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,4435.72]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,4435.72]
+2018-02-03 17:42:53,235 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,4435.72]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,4435.72]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,4435.72]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,4435.72]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,4435.72]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,4435.72]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,4742.85]
+2018-02-03 17:42:53,236 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,4742.85]
+2018-02-03 17:42:53,237 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,4742.85]
+2018-02-03 17:42:53,238 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,4742.85]
+2018-02-03 17:42:53,238 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,4742.85]
+2018-02-03 17:42:53,238 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,5039.53]
+2018-02-03 17:42:53,238 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,5039.53]
+2018-02-03 17:42:53,238 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,5039.53]
+2018-02-03 17:42:53,239 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,5039.53]
+2018-02-03 17:42:53,239 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,5039.53]
+2018-02-03 17:42:53,239 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,5039.53]
+2018-02-03 17:42:53,239 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,5039.53]
+2018-02-03 17:42:53,239 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,5039.53]
+2018-02-03 17:42:53,239 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,5039.53]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,5039.53]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,5039.53]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,5319.52]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,5319.52]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,5319.52]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,5319.52]
+2018-02-03 17:42:53,240 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,5319.52]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [15.4899,5580.31]
+2018-02-03 17:42:53,241 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [17.5411,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [21.0716,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [25.8203,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [31.4353,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [37.5,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [43.5647,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [49.1797,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [53.9284,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [57.4589,5580.31]
+2018-02-03 17:42:53,242 :: WARNING :: batman.space.space ::
+	Ignoring Point - Full Space - [59.5101,5580.31]
+2018-02-03 17:42:53,243 :: INFO :: BATMAN main ::
+	
+----- Sampling parameter space -----
+2018-02-03 17:42:53,243 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [15.4899,2786.55]
+2018-02-03 17:42:53,243 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [17.5411,2786.55]
+2018-02-03 17:42:53,244 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [21.0716,2786.55]
+2018-02-03 17:42:53,245 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [25.8203,2786.55]
+2018-02-03 17:42:53,246 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [31.4353,2786.55]
+2018-02-03 17:42:53,248 :: DEBUG :: batman.tasks.provider_file ::
+	Point (21.071579874583897, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2/.wkdir
+2018-02-03 17:42:53,248 :: DEBUG :: batman.tasks.provider_file ::
+	Point (17.54109150521785, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1/.wkdir
+2018-02-03 17:42:53,249 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [37.5,2786.55]
+2018-02-03 17:42:53,249 :: DEBUG :: batman.tasks.provider_file ::
+	Point (21.071579874583897, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2/.wkdir/batman-coupling
+2018-02-03 17:42:53,249 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0/.wkdir
+2018-02-03 17:42:53,250 :: DEBUG :: batman.tasks.provider_file ::
+	Point (17.54109150521785, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1/.wkdir/batman-coupling
+2018-02-03 17:42:53,250 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [43.5647,2786.55]
+2018-02-03 17:42:53,251 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0/.wkdir/batman-coupling
+2018-02-03 17:42:53,255 :: DEBUG :: batman.tasks.provider_file ::
+	Point (25.820337092846742, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3/.wkdir
+2018-02-03 17:42:53,257 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [49.1797,2786.55]
+2018-02-03 17:42:53,257 :: DEBUG :: batman.tasks.provider_file ::
+	Point (31.435278991072234, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4/.wkdir
+2018-02-03 17:42:53,259 :: DEBUG :: batman.tasks.provider_file ::
+	Point (21.071579874583897, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2/.wkdir
+2018-02-03 17:42:53,264 :: DEBUG :: batman.tasks.provider_file ::
+	Point (25.820337092846742, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3/.wkdir/batman-coupling
+2018-02-03 17:42:53,265 :: DEBUG :: batman.tasks.provider_file ::
+	Point (17.54109150521785, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1/.wkdir
+2018-02-03 17:42:53,265 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [53.9284,2786.55]
+2018-02-03 17:42:53,266 :: DEBUG :: batman.tasks.provider_file ::
+	Point (31.435278991072234, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4/.wkdir/batman-coupling
+2018-02-03 17:42:53,271 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0/.wkdir
+2018-02-03 17:42:53,272 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [57.4589,2786.55]
+2018-02-03 17:42:53,275 :: DEBUG :: batman.tasks.provider_file ::
+	Point (25.820337092846742, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3/.wkdir
+2018-02-03 17:42:53,276 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [59.5101,2786.55]
+2018-02-03 17:42:53,276 :: DEBUG :: batman.tasks.provider_file ::
+	Request snapshot for point [15.4899,3005.01]
+2018-02-03 17:42:53,276 :: INFO :: batman.pod.pod ::
+	Decomposing POD basis...
+2018-02-03 17:42:53,278 :: DEBUG :: batman.tasks.provider_file ::
+	Point (31.435278991072234, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4/.wkdir
+2018-02-03 17:42:54,328 :: DEBUG :: batman.tasks.provider_file ::
+	Point (17.54109150521785, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1
+2018-02-03 17:42:54,328 :: DEBUG :: batman.tasks.provider_file ::
+	Point (17.54109150521785, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1/.wkdir
+2018-02-03 17:42:54,328 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (17.54109150521785, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/1
+2018-02-03 17:42:54,329 :: DEBUG :: batman.tasks.provider_file ::
+	Point (37.499999999999986, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5/.wkdir
+2018-02-03 17:42:54,329 :: DEBUG :: batman.tasks.provider_file ::
+	Point (37.499999999999986, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5/.wkdir/batman-coupling
+2018-02-03 17:42:54,335 :: DEBUG :: batman.tasks.provider_file ::
+	Point (37.499999999999986, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5/.wkdir
+2018-02-03 17:42:54,374 :: DEBUG :: batman.tasks.provider_file ::
+	Point (31.435278991072234, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4
+2018-02-03 17:42:54,374 :: DEBUG :: batman.tasks.provider_file ::
+	Point (31.435278991072234, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4/.wkdir
+2018-02-03 17:42:54,374 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (31.435278991072234, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/4
+2018-02-03 17:42:54,375 :: DEBUG :: batman.tasks.provider_file ::
+	Point (43.56472100892776, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6/.wkdir
+2018-02-03 17:42:54,375 :: DEBUG :: batman.tasks.provider_file ::
+	Point (43.56472100892776, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6/.wkdir/batman-coupling
+2018-02-03 17:42:54,384 :: DEBUG :: batman.tasks.provider_file ::
+	Point (43.56472100892776, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6/.wkdir
+2018-02-03 17:42:54,493 :: DEBUG :: batman.tasks.provider_file ::
+	Point (25.820337092846742, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3
+2018-02-03 17:42:54,494 :: DEBUG :: batman.tasks.provider_file ::
+	Point (25.820337092846742, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3/.wkdir
+2018-02-03 17:42:54,494 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (25.820337092846742, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/3
+2018-02-03 17:42:54,495 :: DEBUG :: batman.tasks.provider_file ::
+	Point (49.17966290715328, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7/.wkdir
+2018-02-03 17:42:54,496 :: DEBUG :: batman.tasks.provider_file ::
+	Point (49.17966290715328, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7/.wkdir/batman-coupling
+2018-02-03 17:42:54,504 :: DEBUG :: batman.tasks.provider_file ::
+	Point (49.17966290715328, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7/.wkdir
+2018-02-03 17:42:54,773 :: DEBUG :: batman.tasks.provider_file ::
+	Point (21.071579874583897, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2
+2018-02-03 17:42:54,774 :: DEBUG :: batman.tasks.provider_file ::
+	Point (21.071579874583897, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2/.wkdir
+2018-02-03 17:42:54,774 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (21.071579874583897, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/2
+2018-02-03 17:42:54,775 :: DEBUG :: batman.tasks.provider_file ::
+	Point (53.9284201254161, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8/.wkdir
+2018-02-03 17:42:54,775 :: DEBUG :: batman.tasks.provider_file ::
+	Point (53.9284201254161, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8/.wkdir/batman-coupling
+2018-02-03 17:42:54,780 :: DEBUG :: batman.tasks.provider_file ::
+	Point (53.9284201254161, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8/.wkdir
+2018-02-03 17:42:54,933 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0
+2018-02-03 17:42:54,934 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0/.wkdir
+2018-02-03 17:42:54,934 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (15.489855191713719, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/0
+2018-02-03 17:42:54,935 :: DEBUG :: batman.tasks.provider_file ::
+	Point (57.45890849478215, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9/.wkdir
+2018-02-03 17:42:54,935 :: DEBUG :: batman.tasks.provider_file ::
+	Point (57.45890849478215, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9/.wkdir/batman-coupling
+2018-02-03 17:42:54,942 :: DEBUG :: batman.tasks.provider_file ::
+	Point (57.45890849478215, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9/.wkdir
+2018-02-03 17:42:55,731 :: DEBUG :: batman.tasks.provider_file ::
+	Point (49.17966290715328, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7
+2018-02-03 17:42:55,731 :: DEBUG :: batman.tasks.provider_file ::
+	Point (49.17966290715328, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7/.wkdir
+2018-02-03 17:42:55,732 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (49.17966290715328, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/7
+2018-02-03 17:42:55,733 :: DEBUG :: batman.tasks.provider_file ::
+	Point (59.510144808286285, 2786.5547112747045) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10/.wkdir
+2018-02-03 17:42:55,733 :: DEBUG :: batman.tasks.provider_file ::
+	Point (59.510144808286285, 2786.5547112747045) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10/.wkdir/batman-coupling
+2018-02-03 17:42:55,739 :: DEBUG :: batman.tasks.provider_file ::
+	Point (59.510144808286285, 2786.5547112747045) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10/.wkdir
+2018-02-03 17:42:55,799 :: DEBUG :: batman.tasks.provider_file ::
+	Point (37.499999999999986, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5
+2018-02-03 17:42:55,799 :: DEBUG :: batman.tasks.provider_file ::
+	Point (37.499999999999986, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5/.wkdir
+2018-02-03 17:42:55,800 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (37.499999999999986, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/5
+2018-02-03 17:42:55,801 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 3005.007923595686) :: Prepared workdir in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11/.wkdir
+2018-02-03 17:42:55,801 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 3005.007923595686) :: Coupling directory is /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11/.wkdir/batman-coupling
+2018-02-03 17:42:55,810 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 3005.007923595686) :: Starting job in /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11/.wkdir
+2018-02-03 17:42:55,989 :: DEBUG :: batman.tasks.provider_file ::
+	Point (43.56472100892776, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6
+2018-02-03 17:42:55,989 :: DEBUG :: batman.tasks.provider_file ::
+	Point (43.56472100892776, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6/.wkdir
+2018-02-03 17:42:55,990 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (43.56472100892776, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/6
+2018-02-03 17:42:56,081 :: DEBUG :: batman.tasks.provider_file ::
+	Point (53.9284201254161, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8
+2018-02-03 17:42:56,081 :: DEBUG :: batman.tasks.provider_file ::
+	Point (53.9284201254161, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8/.wkdir
+2018-02-03 17:42:56,081 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (53.9284201254161, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/8
+2018-02-03 17:42:56,101 :: DEBUG :: batman.tasks.provider_file ::
+	Point (57.45890849478215, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9
+2018-02-03 17:42:56,101 :: DEBUG :: batman.tasks.provider_file ::
+	Point (57.45890849478215, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9/.wkdir
+2018-02-03 17:42:56,102 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (57.45890849478215, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/9
+2018-02-03 17:42:56,719 :: DEBUG :: batman.tasks.provider_file ::
+	Point (59.510144808286285, 2786.5547112747045) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10
+2018-02-03 17:42:56,719 :: DEBUG :: batman.tasks.provider_file ::
+	Point (59.510144808286285, 2786.5547112747045) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10/.wkdir
+2018-02-03 17:42:56,719 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (59.510144808286285, 2786.5547112747045) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/10
+2018-02-03 17:42:56,833 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 3005.007923595686) :: Moved snapshot from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11/.wkdir/batman-coupling to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11
+2018-02-03 17:42:56,833 :: DEBUG :: batman.tasks.provider_file ::
+	Point (15.489855191713719, 3005.007923595686) :: Set symlinks from /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11 to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11/.wkdir
+2018-02-03 17:42:56,834 :: DEBUG :: batman.tasks.provider_file ::
+	Read data for point (15.489855191713719, 3005.007923595686) from directory /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/snapshots/11
+2018-02-03 17:42:56,836 :: INFO :: batman.pod.pod ::
+	Computed POD basis with 3 modes
+2018-02-03 17:42:56,837 :: INFO :: batman.surrogate.surrogate_model ::
+	Creating predictor of kind pc...
+2018-02-03 17:42:57,148 :: INFO :: batman.surrogate.surrogate_model ::
+	Predictor created
+2018-02-03 17:42:57,257 :: DEBUG :: batman.surrogate.surrogate_model ::
+	Model wrote to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/surrogate/surrogate.dat
+2018-02-03 17:42:58,664 :: DEBUG :: batman.space.space ::
+	Space wrote to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/surrogate/DOE.pdf
+2018-02-03 17:42:58,665 :: DEBUG :: batman.surrogate.surrogate_model ::
+	Data wrote to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/surrogate/data.dat
+2018-02-03 17:42:58,665 :: INFO :: batman.surrogate.surrogate_model ::
+	Model, data and space wrote.
+2018-02-03 17:43:00,022 :: DEBUG :: batman.space.space ::
+	Space wrote to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/surrogate/pod/DOE.pdf
+2018-02-03 17:43:00,145 :: INFO :: batman.pod.pod ::
+	Wrote POD to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Tests/Channel_Flow/output/surrogate/pod
+2018-02-03 17:43:00,159 :: INFO :: BATMAN main ::
+	
+POD summary:
+modes filtering tolerance: 0.99
+dimension of parameter space: 2
+number of snapshots: 12
+number of data per snapshot: 5
+maximum number of modes: 100
+number of modes: 3
+modes: [ 8.283  3.016  0.215]
+
+2018-02-03 17:43:00,161 :: INFO :: batman.pod.pod ::
+	Estimating POD quality...
+2018-02-03 17:52:48,445 :: INFO :: batman.pod.pod ::
+	POD quality: 0.962352705607, max error location at (15.489855191713719, 3005.007923595686)
+2018-02-03 17:52:48,446 :: INFO :: batman.uq.uq ::
+	
+----- UQ module -----
+2018-02-03 17:52:48,448 :: INFO :: batman.uq.uq ::
+	Created 1000 samples with an LHS experiment
+2018-02-03 17:52:48,759 :: INFO :: batman.uq.uq ::
+	
+----- Sobol' indices -----
+2018-02-03 17:52:50,560 :: INFO :: batman.uq.uq ::
+	Created 6000 samples for Sobol'
+2018-02-03 17:52:50,577 :: DEBUG :: batman.uq.uq ::
+	-> Second order:
+[array([[ 0.,  0.],
+       [ 0.,  0.]]), array([[ 0.   ,  0.031],
+       [ 0.031,  0.   ]]), array([[ 0.   , -0.007],
+       [-0.007,  0.   ]]), array([[ 0.   , -0.008],
+       [-0.008,  0.   ]]), array([[ 0.,  0.],
+       [ 0.,  0.]])]
+
+2018-02-03 17:52:50,579 :: DEBUG :: batman.uq.uq ::
+	-> First order:
+[array([ -5.112e-05,   2.888e-02]), array([  2.869e-05,   1.791e-01]), array([ -8.677e-05,   1.478e-02]), array([ -8.498e-05,   1.767e-02]), array([ 0.,  0.])]
+-> Total:
+[array([ 0.442,  1.001]), array([ 0.741,  1.003]), array([ 0.043,  0.999]), array([ 0.033,  0.999]), array([ 0.,  0.])]
+
+2018-02-03 17:52:50,579 :: INFO :: batman.uq.uq ::
+	
+----- Aggregated Sensitivity Indices -----
+2018-02-03 17:52:50,601 :: INFO :: batman.uq.uq ::
+	-> First order confidence:
+[-0.000628618, 0.0627607]
+[-17.7702, 0.107523]
+-> Total order confidence:
+[-173.327, 1.01632]
+[-172.631, 1.64989]
+
+2018-02-03 17:52:50,602 :: INFO :: batman.uq.uq ::
+	Aggregated_indices:
+-> Second order:
+[[ 0.     0.002]
+ [ 0.002  0.   ]]
+-> First order:
+[ -4.829e-05   5.163e-02]
+-> Total order:
+[ 0.365  1.001]
+
+2018-02-03 17:52:51,519 :: INFO :: batman.functions.analytical ::
+	Using function Channel Flow with: dx=8000.0, length=40000.0, width=500.0
+2018-02-03 17:52:51,844 :: INFO :: batman.uq.uq ::
+	
+----- Surrogate Model Error -----
+Q2: -0.995464918176
+MSE: 7.67023672963
+L2(sobol 2nd, 1st and total order indices error): 0.0174076434952, 0.92930692618, 1.1019648822
+2018-02-03 17:52:51,844 :: DEBUG :: batman.uq.uq ::
+	Cannot draw QQplot with output dimension > 1
+2018-02-03 17:52:51,844 :: INFO :: batman.uq.uq ::
+	
+----- Uncertainty Propagation -----
+2018-02-03 17:52:51,844 :: INFO :: batman.uq.uq ::
+	Creating Covariance/correlation and figures...
+2018-02-03 17:52:52,622 :: INFO :: batman.uq.uq ::
+	Creating PDF and figures...
+2018-02-03 17:53:00,895 :: INFO :: batman.driver ::
+	Creating response surface...

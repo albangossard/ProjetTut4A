@@ -5,7 +5,7 @@
             [60.0, 6000.0]
         ],
         "sampling": {
-            "init_size": 12,
+            "init_size": 50,
             "method": "halton",
             "distributions": ["Uniform(15., 60.)", "BetaMuSigma(4035, 400, 2500, 6000).getDistribution()"]
         },
@@ -23,7 +23,7 @@
         "type": "static"
     },
     "snapshot": {
-        "max_workers": 5,
+        "max_workers": 10,
         "plabels": ["x1", "x2"],
         "flabels": ["F"],
         "provider": {

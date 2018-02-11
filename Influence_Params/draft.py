@@ -1,6 +1,3 @@
-import json, os
-import numpy as np
-
 class snapshotsReader:
     def __init__(self,path):
         dirs = [f for f in os.listdir(path) if not os.path.isfile(f)]
@@ -33,7 +30,7 @@ class snapshotsReader:
         else:
             return sorted(set(self.__x2))
 
-snap=snapshotsReader('Tests/Channel_Flow/output/snapshots')
-x1Range,x2Range=snap.getParamRange()
-print(x1Range)
-print(x2Range)
+# snap=snapshotsReader('Tests/Channel_Flow/output/snapshots')
+# x1Range,x2Range=snap.getParamRange()
+# print(x1Range)
+# print(x2Range)

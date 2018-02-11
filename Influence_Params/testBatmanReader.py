@@ -1,10 +1,11 @@
-from batmanReader import *
+from batmanIO import *
 
-pred=batmanReader('')
-print(pred.getParamIn("distributions","space","sampling")[0])
-print(pred.getParamIn("predictions","surrogate"))
-print(pred.getSpacePts())
-x1,x2,F=pred.getDataOut()
+simul=batmanIO('')
+simul.read()
+print(simul.getParamIn("distributions","space","sampling")[0])
+print(simul.getParamIn("predictions","surrogate"))
+print(simul.getSpacePts())
+x1,x2,F=simul.getDataOut()
 print(x1)
 print(x2)
 print(F)

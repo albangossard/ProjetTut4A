@@ -1,8 +1,22 @@
-import json, os
+import json, os, subprocess
 import numpy as np
+from fileStruct import *
 
-class batmanReader:
-    def __init__(self,path):
+def plotInfo(plt,listTxt):
+    for i,txt in enumerate(listTxt):
+        plt.figtext(0.0, 1.-0.05*i,txt, wrap=True,
+                    horizontalalignment='left', fontsize=8)
+
+class batmanIO:
+    def __init__(self,path,struct):
+        self.__path=path
+        with open(path+'settings.json', 'w') as jsonData:
+            json.dump(struct, jsonData)
+    def run(self):
+        print("Start running")
+        subprocess.call(['./run.sh'])
+    def read(self):
+        path=self.__path
         dirs = [f for f in os.listdir(path+'output/predictions') if not os.path.isfile(f)]
         nbDir=len(dirs)
         self.__F=[]
@@ -19,10 +33,7 @@ class batmanReader:
         with open(path+'output/snapshots/'+str(i)+'/sample-data.json') as jsonData:
             data=json.load(jsonData)
             self.__X=data['X']
-        self.__structIn={"space":{"sampling":{"init_size","method","distributions"}},
-                    "pod":{"dim_max","tolerance"},
-                    "surrogate":{"predictions","method","strategy"}
-                }
+        self.__structIn=structIn
         with open(path+'settings.json') as jsonData:
             data=json.load(jsonData)
             self.__paramIn={}

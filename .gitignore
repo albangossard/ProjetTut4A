@@ -1,3 +1,4 @@
 output/
 batman.log
 README.rst
+*.pyc

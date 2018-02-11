@@ -16,24 +16,29 @@ class batmanReader:
                 data=json.load(jsonData)
                 self.__x1.append(data['x1'][0])
                 self.__x2.append(data['x2'][0])
-        structIn={"space":{"sampling":{"init_size","method","distributions"}},
+        with open(path+'output/snapshots/'+str(i)+'/sample-data.json') as jsonData:
+            data=json.load(jsonData)
+            self.__X=data['X']
+        self.__structIn={"space":{"sampling":{"init_size","method","distributions"}},
                     "pod":{"dim_max","tolerance"},
                     "surrogate":{"predictions","method","strategy"}
                 }
         with open(path+'settings.json') as jsonData:
             data=json.load(jsonData)
             self.__paramIn={}
-            for block in structIn:
+            for block in self.__structIn:
                 self.__paramIn[block]={}
-                if type(structIn[block])=='dict':
-                    for subblock in structIn[block]:
+                if isinstance(self.__structIn[block], dict):
+                    for subblock in self.__structIn[block]:
                         self.__paramIn[block][subblock]={}
-                        for e in structIn[block][subblock]:
+                        for e in self.__structIn[block][subblock]:
                             self.__paramIn[block][subblock][e]=data[block][subblock][e]
                 else:
-                    for e in structIn[block]:
+                    for e in self.__structIn[block]:
                         self.__paramIn[block][e]=data[block][e]
-    def getData(self,id=None):
+    def getSpacePts(self):
+        return self.__X
+    def getDataOut(self,id=None):
         if id==None:
             return self.__x1,self.__x2,self.__F
         else:
@@ -43,11 +48,16 @@ class batmanReader:
             return self.__paramIn[block][param]
         else:
             return self.__paramIn[block][subblock][param]
-
-pred=predictionsReader('')
-print(pred.getParamIn("distributions","space","sampling")[0])
-print(pred.getParamIn("predictions","surrogate"))
-x1,x2,F=pred.getData()
-print(x1)
-print(x2)
-print(F)
+    def getParamInText(self):
+        listTxt=[]
+        for block in self.__structIn:
+            txt=""
+            if isinstance(self.__structIn[block], dict):
+                for subblock in self.__structIn[block]:
+                    for e in self.__structIn[block][subblock]:
+                        txt+=e+"="+str(self.__paramIn[block][subblock][e])+"   "
+            else:
+                for e in self.__structIn[block]:
+                    txt+=e+"="+str(self.__paramIn[block][e])+"   "
+            listTxt.append(txt)
+        return listTxt

@@ -48,6 +48,12 @@ class batmanIO:
                 else:
                     for e in self.__structIn[block]:
                         self.__paramIn[block][e]=data[block][e]
+        with open("tmp.txt") as f:
+            for line in f:
+                if "Q2: " in line:
+                    self.__Q2=float(line.split(': ')[1])
+    def getQ2(self):
+        return self.__Q2
     def getSpacePts(self):
         return self.__X
     def getDataOut(self,id=None):

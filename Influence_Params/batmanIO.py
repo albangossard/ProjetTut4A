@@ -10,8 +10,9 @@ def plotInfo(plt,listTxt):
 class batmanIO:
     def __init__(self,path,struct):
         self.__path=path
+        self.__settings=struct
         with open(path+'settings.json', 'w') as jsonData:
-            json.dump(struct, jsonData)
+            json.dump(self.__settings, jsonData)
     def run(self):
         print("Start running")
         subprocess.call(['./run.sh'])
@@ -72,3 +73,6 @@ class batmanIO:
                     txt+=e+"="+str(self.__paramIn[block][e])+"   "
             listTxt.append(txt)
         return listTxt
+    def saveSettings(self,fileName):
+        with open(fileName, 'w') as jsonData:
+            json.dump(self.__settings, jsonData)

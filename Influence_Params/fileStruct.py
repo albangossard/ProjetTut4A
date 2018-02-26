@@ -29,7 +29,7 @@ structOut={
         "type": "static"
     },
     "snapshot": {
-        "max_workers": 10,
+        "max_workers": 8,
         "plabels": ["x1", "x2"],
         "flabels": ["F"],
         "provider": {

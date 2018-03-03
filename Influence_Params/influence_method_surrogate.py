@@ -2,12 +2,12 @@ from batmanIO import *
 import matplotlib.pyplot as plt
 from time import gmtime, strftime
 
-list_method=["halton","uniform","lhs","faure","sobol","saltelli"]
+list_method=["kriging","pc"]
 
-# structOut["space"]["sampling"]["init_size"]=60
+structOut["space"]["sampling"]["init_size"]=60
 
 for method in list_method:
-    structOut["space"]["sampling"]["method"]=method
+    structOut["surrogate"]["method"]=method
     simul=batmanIO('',structOut)
     simul.run()
     simul.read()

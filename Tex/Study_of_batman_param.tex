@@ -36,7 +36,7 @@
 
 We compute different surrogate using different initial sample size. These surrogates were computed using a least square strategy. Figure \ref{influence_init_size_method_surrogate_kriging} gives the simulations results for the surrogate. One can observe that we obtain almost the same resultats as the initial sample size is greater than 10. As we will explain in part \ref{}, the results are quite precise but we have no information about the standard deviation of this new model and its sensibility to the parameters. Computing a surrogate with a greater number of points is fundamental to get a quantification of the error.
 
-\begin{figure}[!t]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/influence_init_size_method_surrogate_kriging.png}
   \caption{Water level along the abscisse for simulations with different initial sample size using kriging method for surrogate computing.}
@@ -45,12 +45,38 @@ We compute different surrogate using different initial sample size. These surrog
 
 \subsection{Surrogate method : pc}
 
-\begin{figure}[!t]
+\begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/influence_init_size_method_surrogate_pc.png}
   \caption{Water level along the abscisse for simulations with different initial sample size using pc method for surrogate computing.}
   	\label{influence_init_size_method_surrogate_kriging}
 \end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/influence_degree_method_surrogate_pc.png}
+  \caption{Water level along the abscisse for simulations with different maximum pc degree.}
+  	\label{influence_init_size_method_surrogate_kriging}
+\end{figure}
+
+\subsection{Q2 study}
+
+\begin{table}
+\begin{tabular}{|c|c|}
+  \hline
+  Max pc degree & Q2 value \\
+  \hline
+  1 & 0.77805266\\
+  2 & 0.95102133\\
+  3 & 0.99238156\\
+  4 & 0.99782457\\
+  5 & 0.99813309\\
+  \hline
+\end{tabular}
+\caption{Q2 value for different maximum pc degree using pc method for surrogate computing.}
+\end{table}
+
+
 
 
 \end{document}

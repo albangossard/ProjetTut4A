@@ -35,6 +35,59 @@ In this work we study surrogates problems for different types of modelling probl
 
 \section{Objectives}
 \section{Key notions}
+
+
+\section{Interpolation par krigeage}
+
+Calculer toutes les valeurs est temporellement impossible. Supposons que l'on veuille déterminer la réparitition de la densité de charbon sur chaque mètre carré de la région Lorraine, la tâche serait longue et fasitidieuse. Chaque relevé coûterait du temps et de l'argent et serait surtout inutile. Plutôt que d'effectuer nos mesures sur chaque mètre carré, on se propose d'effectuer des mesures tous les 500 mètres et d'ensuite relier les données sur l'ensemble du territoire. Cette façon de procéder conduit à la notion d'interpolation.
+
+Une première idée serait d'interpoler de manière déterministe par interpolation linéaire, polynomiale, etc. Cette méthode pose plusieurs problèmes. Il sera impossible par formalisme mathématique de quantifier l'incertitude. En effet, les variables déterministes ne permettent pas d'estimer des variations potentielles/non prévisibles. Pour cette raison principalement une alternative propose une interpolation stochastique. Plusieurs méthodes peuvent être proposées : méthode de quadrature, krigeage, polynômes du chaos.
+
+Introduisons quelques outils statistiques :
+
+\subsection{Variogramme}
+
+
+
+
+
+\subsection{Interpolation par krigeage}
+
+Cette méthode est probablement la plus évidente relativement au formalisme mathématique. Il s'agit d'une estimation linéaire où chaque estimation se fera linéairement en fonction de valeurs exactes mesurées au environs et associées à des poids particuliers.
+
+Ainsi, la procédure est la suivante :
+
+(1) On délimite notre zone d'étude en intervalles de paramétrage.
+
+(2) On mesure, calcule à partir d'un modèle physique de départs un certain nombre de données idéales (X_1,$\ldots$,X_n)
+
+(3) Pour un certain point donné dans notre espace délimité on trouve l'estimateur associé en calculant la matrice de poids correspondante.
+(4) notre estimateur en ce point vaut donc la somme des valeurs idéales * leur poids estimé correspondant
+
+Mathématiquement cela donne :
+
+(1) pour un krigeage simple
+
+
+
+
+(2) Pour un krigeage ordinaire
+
+Cette approche apporte plusieurs avantages :
+
+
+Tout d'abord il est possible de quantifier la variance de notre estimation par le biais de la variance du krigeage :
+
+
+
+Les poids de krigeage adoptent des caractéristiques logiques :
+
+(1)A l'infini les points n'apportent plus d'information sur le résultat
+
+(2) Si le nombre de valeurs dans une région donnée est grand alors les poids sont très faibles. Cela s'explique par le fait que chaque point influe davantage sur les zones qui lui sont très proches et moins sur les zones lointaines où l'information se partage entre beaucoup de données.
+
+(3) Dans les régions où il y a peu de données, le krigeage reflète une estimation de la moyenne.
+
 \section{Study of 1D model}
 \subsection{Presentation}
 \subsection{Theoretical tools}

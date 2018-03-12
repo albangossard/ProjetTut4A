@@ -37,6 +37,26 @@ In this work we study surrogates problems for different types of modelling probl
 \section{Key notions}
 
 
+\section{Sources d’incertitude}
+
+ATTENTION : paragraphes à approfondir car une seule source (Fajraoui_noura2014)
+
+
+\subsection{Incertitude structurelle }
+
+Incertitude liée au modèle mathématique, approximation de la réalité. Les hypothèses simplifient les phénomènes physiques et/ou ne les prennent pas tous en considération. Dans notre cas les équations de Saint Venant sont des équations 1D en eau peu profonde.
+
+\subsection{Incertitude numérique}
+
+
+Imprécisions liées aux approximations numériques qui s’accumulent dans les calculs. les solutions ne sont pas forcément analytiques et chaque étape de calcul peut conduire à une approximation qui s’additionne aux précédentes, par exemple enchaînement d’erreurs d’arrondi. L’incertitude numérique concerne aussi l’erreur de discrétisation spatiale obtenue lors des relevés physiques effectués par les spécialistes sur le terrain.
+
+\subsection{Incertitude paramétrique}
+
+Incertitude obtenue par la variabilité des paramètres d’entrée ou du manque d’information ou du biais d’un échantillon de départ. Un test statistique effectué sur un échantillon non représentatif peut mener à des résultats complètement biaisés.
+
+
+
 \section{Interpolation par krigeage}
 
 Calculer toutes les valeurs est temporellement impossible. Supposons que l'on veuille déterminer la réparitition de la densité de charbon sur chaque mètre carré de la région Lorraine, la tâche serait longue et fasitidieuse. Chaque relevé coûterait du temps et de l'argent et serait surtout inutile. Plutôt que d'effectuer nos mesures sur chaque mètre carré, on se propose d'effectuer des mesures tous les 500 mètres et d'ensuite relier les données sur l'ensemble du territoire. Cette façon de procéder conduit à la notion d'interpolation.
@@ -93,7 +113,20 @@ Les poids de krigeage adoptent des caractéristiques logiques :
 
 
 Comment choisir les points de référence? Méthode quasi aléatoires
-\section{}
+\section{Méthodes d’échantillonage}
+
+Dans ce paragraphe nous traitons la problématique de l’échantillonnage de l’espace de départ. L’échantillon de départ est limité à N données. Comment les choisir de manière optimale? 
+
+Une première idée consiste à les quadriller de manière régulière notre espace de départ. Pour des raisons de périodicité et de régularité cette méthode peut conduire à l’obtention d’un échantillon non représentatif de la population de départ. Par exemple nous voulons modéliser la fonction sinus sur l’intervalle [0,2k$\pi$]. Si les relevés sont effectués régulièrement tous les 2i$\pi$ alors on pourra penser que la fonction sinus est constante égale à 1. 
+
+D’autres approches permettent de limiter ce risque. Nous allons tout d’abord voir les méthodes de Monte-Carlo puis des méthodes quasi-aléatoires comme la méthode de séquencement de Halton.
+
+\subsection{Méthodes de Monte-Carlo}
+
+
+\subsection{Séquence de halton}
+
+
 
 
 \section{Study of 1D model}

@@ -1,0 +1,4 @@
+['Uniform(15., 60.)', 'Uniform(2500., 6000.)']
+['Uniform(15., 60.)', 'BetaMuSigma(4035, 400, 2500, 6000).getDistribution()']
+['BetaMuSigma(37.5, 5., 15., 60.).getDistribution()', 'Uniform(2500., 6000.)']
+['BetaMuSigma(37.5, 5., 15., 60.).getDistribution()', 'BetaMuSigma(4035, 400, 2500, 6000).getDistribution()']

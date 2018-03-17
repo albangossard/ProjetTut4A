@@ -73,7 +73,7 @@ class Analyse:
         # UQ
         if self.verbose>=1:
             print('\nDoing UQ...')
-        k_uq = UQ(k_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', xdata=self.curv_abs, fname=self.fname+'/uq')
+        k_uq = UQ(k_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', xdata=self.curv_abs, fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         if self.verbose>=1:
             print('Sobol indices: '+str(k_sobol))
@@ -113,9 +113,29 @@ class Analyse:
             print('Getting metrics:')
         self.msePC = mean_squared_error(self.y_test, y_pred_pc)
         self.q2PC = r2_score(self.y_test, y_pred_pc)
-
         if self.verbose>=1:
             print('-> MSE: '+str(self.msePC)+'\n-> Q2: '+str(self.q2PC))
+
+        """# UQ
+        if self.verbose>=1:
+            print('\nDoing UQ...')
+        pc_uq = UQ(pc_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', xdata=self.curv_abs, fname=self.fname+'/uqPC')
+        pc_sobol = pc_uq.sobol()
+        if self.verbose>=1:
+            print('Sobol indices: '+str(pc_sobol))
+        pc_uq.error_propagation()
+
+        # Visualization
+        if self.verbose>=1:
+            print('\nDoing some visusualizations...')
+
+        # Response surface
+        if self.verbose>=1:
+            print('-> Response surface')
+        response_surface(bounds=([30.0, 3000.0], [55.0, 5500.0]),
+                         fun=lambda x: pc_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
+                         feat_order=[1, 2], ticks_nbr=5, range_cbar=[-7.193, -0.159],
+                         fname=self.fname+'/resp_surface_pc', xdata=self.curv_abs)"""
     def getSensibilityPC(self):
         return self.msePC,self.q2PC
     def getSensibilityKriging(self):

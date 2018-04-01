@@ -31,6 +31,17 @@ In this work we study surrogates problems for different types of modelling probl
 
 \tableofcontents
 
+\section{Introduction}
+
+The resources management and the flood forecast requires a solid anticipation which relies onto solid hydraulic models. The numerical breakthroughs allowed huge progress in computational efficiency.
+
+The shallow water equations (SWE) derived from the Navier Stokes for free surface flows proved their efficiency for flood problems in open channels. Regardless, any prediction requires a good knowledge of certain initial values : physical coefficient such as friction and initial flow rate, river bathymetry and boundary conditions. These values vary over time. Because of a lack of knowledge we must assume the input parameters are subject to hazard. Then, variability exists and can come from the nature of the numerical model but also from the environment such as the weather or the season. With this idea we proceed to uncertainty quantification and study output errors and the influence of each input parameter which could limit the effectiveness of the forecast. The objective of uncertainty quantification is to study and to classify the different sources of variability to limit the errors in output. The aim is to better build numerical models to make them less fragile in front of uncertainties, to propose better estimates for reduced computation time.
+
+Indeed, physico-numerical models are long to compute. To avoid this problem we generate a surrogate model given a few number of values. The idea is the following : the original based on physical equations give the best approximation of reality we can expect. We use this model to determine a few amount of points and given these results we interpolate them to have a full model on our study area. 
+We consider certain input parameters. As we will see in the following, in the "Chanel Flow" model we consider two input parameters : Q which is the initial flow and $K_s$ the Strickler's coefficient. Because the parameters can vary in time, we model them using random variables. The calibrations are given by experts. 
+If the model's computation is too time-consuming, we prefer to evaluate a surrogate model cheaper in time-cost. In our example we will choose two different types of models : krigeage and Polynomial chaos. Because surrogate models are just an approximation of the physical ones, we have to evaluate uncertainty and the influence of each parameters on the output values.
+
+We will introduce briefly the different tools used in our projects. The first tests will be set on the "Chanel flow" model and the Mickalevitch function. In the last part we will test the efficiency of a surrogate model based on values coming from the Garonne's river, computed using MASCARET-TELEMACS.
 
 
 \section{Objectives}
@@ -123,6 +134,12 @@ D’autres approches permettent de limiter ce risque. Nous allons tout d’abord
 
 \subsection{Méthodes de Monte-Carlo}
 
+Les échantillons ont tendance à se regrouper autour de la région à forte densité
+
+
+\subsection{Latin Hypercube Sampling}
+
+Meilleur couverture du sampling
 
 \subsection{Séquence de halton}
 

@@ -101,6 +101,47 @@ This estimator has several advantages. It is the best linear unbiased predictor.
 \\
 (5)In areas where there is little data, kriging reflects an estimate of the average. Indeed the values influence in a roughly equivalent way on the very distant points.
 
+\subsubsection{Ordinary kriging solving system}
+We place ourselves in the framework of a stationary random function. Thus:
+
+$$E[Y_i]=E[Y_j]=\mu, \forall i,j$$
+
+and $$Cov(X_i,X_{i+h})=\gamma(h), \forall i$$
+
+The fact that our kriging estimator is of minimal variance and is unbiased at points $Y_i$ gives us:
+
+$$E[Y_0-Y_i]=0$$
+So, $$\sum_{i=0}^{n}\lambda_iE[Y_i]=E[Y_i]$$
+Then, $$\mu \sum_{i=1}^{n}\lambda_i = \mu$$
+
+If we don't know the value of $\mu$, we need to have $$\sum_{i=1}^{n}\lambda_i=1$$
+
+The second condition on the minimal variance gives : 
+$$ (\lambda_1,\ldots,\lambda_n)=argmin_{\sum \lambda_i=1 } Var(\^{Y}_0-Y_0)$$
+
+We solve this convex optimization problem using the following lagrangian :
+
+$$L(\alpha)=Var(\^{Y}_0-Y_0)+\alpha(\sum_{i=0}^{n}\lambda_i-1)$$
+
+This brings us to the following result :
+
+$$\forall i \in {1,\ldots, n}, \sum_{i=1}^{n}\lambda_j Cov(Y_i,Y_j)+ \alpha = Cov(Y_0,Y_i)$$
+
+Using matrices we need to solve the following system :
+
+$$
+\begin{bmatrix}
+\gamma_{11}& \cdots  & K_{1j} & 1\\ \vdots & \ddots & \vdots & \vdots \\ K_{i1} & \cdots  & K_{nn} & 1 \\ 1 & \cdots & 1 & 0 
+\end{bmatrix} 
+\begin{bmatrix}
+\lambda_1 \\ \vdots \\ \lambda_n \\ - \mu 
+\end{bmatrix} = 
+\begin{bmatrix} K_{1X} \\ \vdots \\ K_{nX} \\ 1
+\end{bmatrix}.$$
+
+where $K_{ij}=Cov(Y_i,Y_j)$
+
+
 
 
 Introduisons quelques outils statistiques :

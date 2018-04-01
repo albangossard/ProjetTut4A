@@ -72,7 +72,7 @@ Incertitude obtenue par la variabilité des paramètres d’entrée ou du manque
 
 Calculer toutes les valeurs est temporellement impossible. Supposons que l'on veuille déterminer la réparitition de la densité de charbon sur chaque mètre carré de la région Lorraine, la tâche serait longue et fasitidieuse. Chaque relevé coûterait du temps et de l'argent et serait surtout inutile. Plutôt que d'effectuer nos mesures sur chaque mètre carré, on se propose d'effectuer des mesures tous les 500 mètres et d'ensuite relier les données sur l'ensemble du territoire. Cette façon de procéder conduit à la notion d'interpolation.
 
-Une première idée serait d'interpoler de manière déterministe par interpolation linéaire, polynomiale, etc. Cette méthode pose plusieurs problèmes. Il sera impossible par formalisme mathématique de quantifier l'incertitude. En effet, les variables déterministes ne permettent pas d'estimer des variations potentielles/non prévisibles. Pour cette raison principalement une alternative propose une interpolation stochastique. Plusieurs méthodes peuvent être proposées : méthode de quadrature, krigeage, polynômes du chaos.
+Une première idée serait d'interpoler de manière déterministe par interpolation linéaire, polynomiale, etc. Cette méthode pose plusieurs problèmes. Il sera impossible par formalisme mathématique de quantifier l'incertitude. En effet, les variables déterministes ne permettent pas d'estimer des variations potentielles/non prévisibles. Pour cette raison principalement une alternative propose une interpolation stochastique. Plusieurs méthodes peuvent être proposées : krigeage, polynômes du chaos.
 
 Introduisons quelques outils statistiques :
 
@@ -119,7 +119,6 @@ Les poids de krigeage adoptent des caractéristiques logiques :
 
 (3) Dans les régions où il y a peu de données, le krigeage reflète une estimation de la moyenne.
 
-\section{Méthode de quadrature}
 \section{Interpolation par polynomes du chaos}
 
 
@@ -142,7 +141,6 @@ Les échantillons ont tendance à se regrouper autour de la région à forte den
 Meilleur couverture du sampling
 
 \subsection{Séquence de halton}
-
 
 
 

@@ -68,11 +68,40 @@ Incertitude obtenue par la variabilité des paramètres d’entrée ou du manque
 
 
 
-\section{Interpolation par krigeage}
 
-Calculer toutes les valeurs est temporellement impossible. Supposons que l'on veuille déterminer la réparitition de la densité de charbon sur chaque mètre carré de la région Lorraine, la tâche serait longue et fasitidieuse. Chaque relevé coûterait du temps et de l'argent et serait surtout inutile. Plutôt que d'effectuer nos mesures sur chaque mètre carré, on se propose d'effectuer des mesures tous les 500 mètres et d'ensuite relier les données sur l'ensemble du territoire. Cette façon de procéder conduit à la notion d'interpolation.
+\section{Surrogate Models}
 
-Une première idée serait d'interpoler de manière déterministe par interpolation linéaire, polynomiale, etc. Cette méthode pose plusieurs problèmes. Il sera impossible par formalisme mathématique de quantifier l'incertitude. En effet, les variables déterministes ne permettent pas d'estimer des variations potentielles/non prévisibles. Pour cette raison principalement une alternative propose une interpolation stochastique. Plusieurs méthodes peuvent être proposées : krigeage, polynômes du chaos.
+Calculating all values is impossible for reasons of calculation time. Suppose we wanted to determine the distribution of coal density over each square meter of the Lorraine region, the task would be long and tedious. Each statement would cost time and money. Instead of taking too many measurements on each square meter, we propose to reduce the number of measurements and then interpolate the data over the entire territory. This problem gave rise to the so-called kriging technique.
+
+A first idea would be to interpolate deterministically by linear, polynomial interpolation. This method raises several problems. It will be impossible by mathematical formalism to quantify uncertainty. Indeed, the deterministic variables do not make it possible to estimate potential/unforeseeable variations. For this reason, an alternative proposes a stochastic interpolation.
+
+In this paper we use different methods for computing surrogate models. In this part we present some of their main characteristics.
+
+
+\subsubsection{Kriging}
+
+Kriging consists in creating a linear estimator from measurements already made before. Using the physical model, n output values $(Y_1,\ldots,Y_n)$ are determined for inputs distributed over our study set. 
+
+The estimator noted Ŷ then : $Ŷ=\sum_{i=1}^{n}\lambda_i Y_i$ where $\lambda_i$ are scalar values associated to each $Y_i$.
+
+This estimator has several advantages. It is the best linear unbiased predictor. This means it minimizes the variance of errors $Var[Ŷ-Y]^2$, it is a linear combination of the measures $Y_i$ and it is unbiased $E[Ŷ-Y]=0$.
+\\
+\\
+(1)Also, Ŷ admits the perfect values at the $Y_i$ measures.
+\\
+\\
+(2)To infinity the points do not bring any more information on the result.
+\\
+\\
+(3)$\sum_{i=1}^{n}\lambda_i=1$
+\\
+\\
+(4)If there are many values in a given region then the weights are low. This is because each point has a greater impact on areas that is close to it and less on remote areas where information is shared between a lot of data points.
+\\
+\\
+(5)In areas where there is little data, kriging reflects an estimate of the average. Indeed the values influence in a roughly equivalent way on the very distant points.
+
+
 
 Introduisons quelques outils statistiques :
 
@@ -119,6 +148,7 @@ Les poids de krigeage adoptent des caractéristiques logiques :
 
 (3) Dans les régions où il y a peu de données, le krigeage reflète une estimation de la moyenne.
 
+\section{Méthode de quadrature}
 \section{Interpolation par polynomes du chaos}
 
 
@@ -141,6 +171,7 @@ Les échantillons ont tendance à se regrouper autour de la région à forte den
 Meilleur couverture du sampling
 
 \subsection{Séquence de halton}
+
 
 
 

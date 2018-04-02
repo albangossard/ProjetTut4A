@@ -61,7 +61,7 @@ A first idea would be to interpolate deterministically by linear, polynomial int
 In this paper we use different methods for computing surrogate models. In this part we present some of their main characteristics.
 
 
-\subsubsection{Kriging}
+\subsection{Kriging}
 
 Kriging consists in creating a linear estimator from measurements already made before. Using the physical model, $n$ output values $(Y_1,\ldots,Y_n)$ are determined for inputs distributed over our study set. 
 
@@ -138,6 +138,7 @@ $$\gamma(h)=\frac{1}{2} \frac{1}{N} \sum_{i=1}^{N} (Y_i - Y_{i+h})^2$$
 BATMAN assumes an exponential shape model: 
 $$C(h)=\left(1- \exp{\left(-\frac{h}{r}\right)}\right)$$
 
+\subsection{Polynomial Chaos (PC) Expansion}
 
 
 
@@ -146,7 +147,7 @@ $$C(h)=\left(1- \exp{\left(-\frac{h}{r}\right)}\right)$$
 
 Building a surrogate model requires to know if we need surrogate's parameters such as the degree for polynomial chaos expansion. Before setting up a surrogate model based on MASCARET-TELEMACS, one can determine these parameters using shallow water equations.
 
-For both PC expansion and kriging surrogates we determine an efficient initial sample size for surrogate computing. An efficient sample size is a number of sample giving a trade-off between heavy calculations and a quadratic error $Q_2$ not too far away from $1$. For PC expansion surrogate, we need to determine the polynomial degree. This parameter determine the number of polynomial coefficients we have to estimate. If we want the surrogate model to fit the training data, we need the sample size to be large enough considering the degree.
+For both PC expansion and kriging surrogates we determine an efficient initial sample size for surrogate computing. An efficient sample size is a number of sample giving a trade-off between heavy calculations and a quadratic error Q2 not too far away from $1$. For PC expansion surrogate, we need to determine the polynomial degree. This parameter determine the number of polynomial coefficients we have to estimate. If we want the surrogate model to fit the training data, we need the sample size to be large enough considering the degree.
 
 %\subsection{Presentation}
 %\subsection{Theoretical tools}
@@ -154,9 +155,28 @@ For both PC expansion and kriging surrogates we determine an efficient initial s
 %\subsubsection{First example : Ishigami}
 %\subsubsection{Garonne Model }
 
-\input{garonne_model}
+%\input{garonne_model}
 
 %\subsubsection{Michalewicz example}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/init_size_mse.png}
+  \caption{Mean square error (MSE) for PC and kriging surrogates with different initial sample size.}
+  	\label{init_size_mse}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/init_size_q2.png}
+  \caption{Q2 for PC and kriging surrogates with different initial sample size.}
+  	\label{init_size_q2}
+\end{figure}
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{images/degree.png}
+  \caption{Mean square error (MSE) and Q2 for PC surrogate in function of the degree. In dotted is given the MSE and the Q2 for kriging surrogate.}
+  	\label{init_size_q2}
+\end{figure}
 
 
 

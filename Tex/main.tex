@@ -1,11 +1,15 @@
 \documentclass[hidelinks,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-%\usepackage[french]{babel}
+
+%% A SUPPRIMER A LA FIN
+\usepackage[french]{babel}
+
 \usepackage{times}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{caption,graphicx,enumitem}
+\usepackage{amsmath}
 %\usepackage{titlesec}
 
 %\setcounter{secnumdepth}{4}
@@ -13,7 +17,7 @@
 
 \begin{document}
 
-\title{Research project report}
+\title{Study of a surrogate model for shallow water equations}
 \author{Bastien Nony, Alban Gossard\\
 Institut National des Sciences Appliquées,\\
 Toulouse,\\
@@ -38,8 +42,8 @@ The resources management and the flood forecast requires a solid anticipation wh
 The shallow water equations (SWE) derived from the Navier Stokes for free surface flows proved their efficiency for flood problems in open channels. Regardless, any prediction requires a good knowledge of certain initial values : physical coefficient such as friction and initial flow rate, river bathymetry and boundary conditions. These values vary over time. Because of a lack of knowledge we must assume the input parameters are subject to hazard. Then, variability exists and can come from the nature of the numerical model but also from the environment such as the weather or the season. With this idea we proceed to uncertainty quantification and study output errors and the influence of each input parameter which could limit the effectiveness of the forecast. The objective of uncertainty quantification is to study and to classify the different sources of variability to limit the errors in output. The aim is to better build numerical models to make them less fragile in front of uncertainties, to propose better estimates for reduced computation time.
 
 Indeed, physico-numerical models are long to compute. To avoid this problem we generate a surrogate model given a few number of values. The idea is the following : the original based on physical equations give the best approximation of reality we can expect. We use this model to determine a few amount of points and given these results we interpolate them to have a full model on our study area. 
-We consider certain input parameters. As we will see in the following, in the "Chanel Flow" model we consider two input parameters : Q which is the initial flow and $K_s$ the Strickler's coefficient. Because the parameters can vary in time, we model them using random variables. The calibrations are given by experts. 
-If the model's computation is too time-consuming, we prefer to evaluate a surrogate model cheaper in time-cost. In our example we will choose two different types of models : krigeage and Polynomial chaos. Because surrogate models are just an approximation of the physical ones, we have to evaluate uncertainty and the influence of each parameters on the output values.
+We consider certain input parameters. As we will see in the following, in the "Chanel Flow" model we consider two input parameters : $Q$ which is the initial flow and $K_s$ the Strickler's coefficient. Because the parameters can vary in time, we model them using random variables. The calibrations are given by experts. 
+If the model's computation is too time-consuming, we prefer to evaluate a surrogate model cheaper in time-cost. In our example we will choose two different types of models : kriging and polynomial chaos. Because surrogate models are just an approximation of the physical ones, we have to evaluate uncertainty and the influence of each parameters on the output values.
 
 We will introduce briefly the different tools used in our projects. The first tests will be set on the "Chanel flow" model and the Mickalevitch function. In the last part we will test the efficiency of a surrogate model based on values coming from the Garonne's river, computed using MASCARET-TELEMACS.
 
@@ -50,7 +54,7 @@ We will introduce briefly the different tools used in our projects. The first te
 
 \section{Sources d’incertitude}
 
-ATTENTION : paragraphes à approfondir car une seule source (Fajraoui_noura2014)
+%ATTENTION : paragraphes à approfondir car une seule source (Fajraoui_noura2014)
 
 
 \subsection{Incertitude structurelle }
@@ -71,7 +75,7 @@ Incertitude obtenue par la variabilité des paramètres d’entrée ou du manque
 
 \section{Surrogate Models}
 
-Calculating all values is impossible for reasons of calculation time. Suppose we wanted to determine the distribution of coal density over each square meter of the Lorraine region, the task would be long and tedious. Each statement would cost time and money. Instead of taking too many measurements on each square meter, we propose to reduce the number of measurements and then interpolate the data over the entire territory. This problem gave rise to the so-called kriging technique.
+Calculating all values is impossible for reasons of computing time. Suppose we wanted to determine the distribution of coal density over each square meter of the Lorraine region, the task would be long and tedious. Each statement would cost time and money. Instead of taking too many measurements on each square meter, we propose to reduce the number of measurements and then interpolate the data over the entire space map. This problem gave rise to the so-called kriging technique.
 
 A first idea would be to interpolate deterministically by linear, polynomial interpolation. This method raises several problems. It will be impossible by mathematical formalism to quantify uncertainty. Indeed, the deterministic variables do not make it possible to estimate potential/unforeseeable variations. For this reason, an alternative proposes a stochastic interpolation.
 
@@ -80,14 +84,14 @@ In this paper we use different methods for computing surrogate models. In this p
 
 \subsubsection{Kriging}
 
-Kriging consists in creating a linear estimator from measurements already made before. Using the physical model, n output values $(Y_1,\ldots,Y_n)$ are determined for inputs distributed over our study set. 
+Kriging consists in creating a linear estimator from measurements already made before. Using the physical model, $n$ output values $(Y_1,\ldots,Y_n)$ are determined for inputs distributed over our study set. 
 
-The estimator noted Ŷ then : $Ŷ=\sum_{i=1}^{n}\lambda_i Y_i$ where $\lambda_i$ are scalar values associated to each $Y_i$.
+The estimator noted $\hat{Y}$ then : $\hat{Y}=\sum_{i=1}^{n}\lambda_i Y_i$ where $\lambda_i$ are scalar values associated to each $Y_i$.
 
-This estimator has several advantages. It is the best linear unbiased predictor. This means it minimizes the variance of errors $Var[Ŷ-Y]^2$, it is a linear combination of the measures $Y_i$ and it is unbiased $E[Ŷ-Y]=0$.
+This estimator has several advantages. It is the best linear unbiased predictor. This means it minimizes the variance of errors $Var[\hat{Y}-Y]^2$, it is a linear combination of the measures $Y_i$ and it is unbiased $E[\hat{Y}-Y]=0$.
 \\
 \\
-(1)Also, Ŷ admits the perfect values at the $Y_i$ measures.
+(1)Also, $\hat{Y}$ admits the perfect values at the $Y_i$ measures.
 \\
 \\
 (2)To infinity the points do not bring any more information on the result.
@@ -117,11 +121,11 @@ Then, $$\mu \sum_{i=1}^{n}\lambda_i = \mu$$
 If we don't know the value of $\mu$, we need to have $$\sum_{i=1}^{n}\lambda_i=1$$
 
 The second condition on the minimal variance gives : 
-$$ (\lambda_1,\ldots,\lambda_n)=argmin_{\sum \lambda_i=1 } Var(\^{Y}_0-Y_0)$$
+$$ (\lambda_1,\ldots,\lambda_n)=argmin_{\sum \lambda_i=1 } Var(\hat{Y}_0-Y_0)$$
 
 We solve this convex optimization problem using the following lagrangian :
 
-$$L(\alpha)=Var(\^{Y}_0-Y_0)+\alpha(\sum_{i=0}^{n}\lambda_i-1)$$
+$$L(\alpha)=Var(\hat{Y}_0-Y_0)+\alpha(\sum_{i=0}^{n}\lambda_i-1)$$
 
 This brings us to the following result :
 
@@ -161,7 +165,7 @@ Ainsi, la procédure est la suivante :
 
 (1) On délimite notre zone d'étude en intervalles de paramétrage.
 
-(2) On mesure, calcule à partir d'un modèle physique de départs un certain nombre de données idéales (X_1,$\ldots$,X_n)
+(2) On mesure, calcule à partir d'un modèle physique de départs un certain nombre de données idéales ($X_1,\ldots,X_n$)
 
 (3) Pour un certain point donné dans notre espace délimité on trouve l'estimateur associé en calculant la matrice de poids correspondante.
 (4) notre estimateur en ce point vaut donc la somme des valeurs idéales * leur poids estimé correspondant
@@ -199,7 +203,7 @@ Comment choisir les points de référence? Méthode quasi aléatoires
 
 Dans ce paragraphe nous traitons la problématique de l’échantillonnage de l’espace de départ. L’échantillon de départ est limité à N données. Comment les choisir de manière optimale? 
 
-Une première idée consiste à les quadriller de manière régulière notre espace de départ. Pour des raisons de périodicité et de régularité cette méthode peut conduire à l’obtention d’un échantillon non représentatif de la population de départ. Par exemple nous voulons modéliser la fonction sinus sur l’intervalle [0,2k$\pi$]. Si les relevés sont effectués régulièrement tous les 2i$\pi$ alors on pourra penser que la fonction sinus est constante égale à 1. 
+Une première idée consiste à les quadriller de manière régulière notre espace de départ. Pour des raisons de périodicité et de régularité cette méthode peut conduire à l’obtention d’un échantillon non représentatif de la population de départ. Par exemple nous voulons modéliser la fonction sinus sur l’intervalle $[0,2k\pi ]$. Si les relevés sont effectués régulièrement tous les $2i\pi$ alors on pourra penser que la fonction sinus est constante égale à 1. 
 
 D’autres approches permettent de limiter ce risque. Nous allons tout d’abord voir les méthodes de Monte-Carlo puis des méthodes quasi-aléatoires comme la méthode de séquencement de Halton.
 

@@ -48,30 +48,9 @@ If the model's computation is too time-consuming, we prefer to evaluate a surrog
 We will introduce briefly the different tools used in our projects. The first tests will be set on the "Chanel flow" model and the Mickalevitch function. In the last part we will test the efficiency of a surrogate model based on values coming from the Garonne's river, computed using MASCARET-TELEMACS.
 
 
-\section{Objectives}
-\section{Key notions}
 
 
-\section{Sources d’incertitude}
-
-%ATTENTION : paragraphes à approfondir car une seule source (Fajraoui_noura2014)
-
-
-\subsection{Incertitude structurelle }
-
-Incertitude liée au modèle mathématique, approximation de la réalité. Les hypothèses simplifient les phénomènes physiques et/ou ne les prennent pas tous en considération. Dans notre cas les équations de Saint Venant sont des équations 1D en eau peu profonde.
-
-\subsection{Incertitude numérique}
-
-
-Imprécisions liées aux approximations numériques qui s’accumulent dans les calculs. les solutions ne sont pas forcément analytiques et chaque étape de calcul peut conduire à une approximation qui s’additionne aux précédentes, par exemple enchaînement d’erreurs d’arrondi. L’incertitude numérique concerne aussi l’erreur de discrétisation spatiale obtenue lors des relevés physiques effectués par les spécialistes sur le terrain.
-
-\subsection{Incertitude paramétrique}
-
-Incertitude obtenue par la variabilité des paramètres d’entrée ou du manque d’information ou du biais d’un échantillon de départ. Un test statistique effectué sur un échantillon non représentatif peut mener à des résultats complètement biaisés.
-
-
-
+\section{Aim of this study and contextualization}
 
 \section{Surrogate Models}
 
@@ -160,96 +139,27 @@ BATMAN assumes an exponential shape model:
 $$C(h)=\left(1- \exp{\left(-\frac{h}{r}\right)}\right)$$
 
 
-Introduisons quelques outils statistiques :
-
-\subsection{Variogramme}
 
 
 
+\section{Study of the 1D model}
 
+Building a surrogate model requires to know if we need surrogate's parameters such as the degree for polynomial chaos expansion. Before setting up a surrogate model based on MASCARET-TELEMACS, one can determine these parameters using shallow water equations.
 
-\subsection{Interpolation par krigeage}
+For both PC expansion and kriging surrogates we determine an efficient initial sample size for surrogate computing. An efficient sample size is a number of sample giving a trade-off between heavy calculations and a quadratic error $Q_2$ not too far away from $1$. For PC expansion surrogate, we need to determine the polynomial degree. This parameter determine the number of polynomial coefficients we have to estimate. If we want the surrogate model to fit the training data, we need the sample size to be large enough considering the degree.
 
-Cette méthode est probablement la plus évidente relativement au formalisme mathématique. Il s'agit d'une estimation linéaire où chaque estimation se fera linéairement en fonction de valeurs exactes mesurées au environs et associées à des poids particuliers.
-
-Ainsi, la procédure est la suivante :
-
-(1) On délimite notre zone d'étude en intervalles de paramétrage.
-
-(2) On mesure, calcule à partir d'un modèle physique de départs un certain nombre de données idéales ($X_1,\ldots,X_n$)
-
-(3) Pour un certain point donné dans notre espace délimité on trouve l'estimateur associé en calculant la matrice de poids correspondante.
-(4) notre estimateur en ce point vaut donc la somme des valeurs idéales * leur poids estimé correspondant
-
-Mathématiquement cela donne :
-
-(1) pour un krigeage simple
-
-
-
-
-(2) Pour un krigeage ordinaire
-
-Cette approche apporte plusieurs avantages :
-
-
-Tout d'abord il est possible de quantifier la variance de notre estimation par le biais de la variance du krigeage :
-
-
-
-Les poids de krigeage adoptent des caractéristiques logiques :
-
-(1)A l'infini les points n'apportent plus d'information sur le résultat
-
-(2) Si le nombre de valeurs dans une région donnée est grand alors les poids sont très faibles. Cela s'explique par le fait que chaque point influe davantage sur les zones qui lui sont très proches et moins sur les zones lointaines où l'information se partage entre beaucoup de données.
-
-(3) Dans les régions où il y a peu de données, le krigeage reflète une estimation de la moyenne.
-
-\section{Méthode de quadrature}
-\section{Interpolation par polynomes du chaos}
-
-
-Comment choisir les points de référence? Méthode quasi aléatoires
-\section{Méthodes d’échantillonage}
-
-Dans ce paragraphe nous traitons la problématique de l’échantillonnage de l’espace de départ. L’échantillon de départ est limité à N données. Comment les choisir de manière optimale? 
-
-Une première idée consiste à les quadriller de manière régulière notre espace de départ. Pour des raisons de périodicité et de régularité cette méthode peut conduire à l’obtention d’un échantillon non représentatif de la population de départ. Par exemple nous voulons modéliser la fonction sinus sur l’intervalle $[0,2k\pi ]$. Si les relevés sont effectués régulièrement tous les $2i\pi$ alors on pourra penser que la fonction sinus est constante égale à 1. 
-
-D’autres approches permettent de limiter ce risque. Nous allons tout d’abord voir les méthodes de Monte-Carlo puis des méthodes quasi-aléatoires comme la méthode de séquencement de Halton.
-
-\subsection{Méthodes de Monte-Carlo}
-
-Les échantillons ont tendance à se regrouper autour de la région à forte densité
-
-
-\subsection{Latin Hypercube Sampling}
-
-Meilleur couverture du sampling
-
-\subsection{Séquence de halton}
-
-
-
-
-\section{Study of 1D model}
-\subsection{Presentation}
-\subsection{Theoretical tools}
-\subsection{Surrogate model analysis}
-\subsubsection{First example : Ishigami}
-\subsubsection{Garonne Model }
+%\subsection{Presentation}
+%\subsection{Theoretical tools}
+%\subsection{Surrogate model analysis}
+%\subsubsection{First example : Ishigami}
+%\subsubsection{Garonne Model }
 
 \input{garonne_model}
 
-\subsubsection{Michalewicz example}
+%\subsubsection{Michalewicz example}
 
 
 
-
-
-%\section{Annex}
-
-%\subsection{Polynomial Chaos} ?????
 
 
 

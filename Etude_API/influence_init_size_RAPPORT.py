@@ -1,4 +1,6 @@
 from Analyse import *
+import matplotlib
+matplotlib.use('agg')
 import matplotlib.pyplot as plt
 
 fname='init_size_RAPPORT'

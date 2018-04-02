@@ -75,7 +75,7 @@ Incertitude obtenue par la variabilité des paramètres d’entrée ou du manque
 
 \section{Surrogate Models}
 
-Calculating all values is impossible for reasons of computing time. Suppose we wanted to determine the distribution of coal density over each square meter of the Lorraine region, the task would be long and tedious. Each statement would cost time and money. Instead of taking too many measurements on each square meter, we propose to reduce the number of measurements and then interpolate the data over the entire space map. This problem gave rise to the so-called kriging technique.
+Calculating all values is impossible for computing time reasons. Suppose we wanted to determine the distribution of coal density over each square meter of the Lorraine region, the task would be long and tedious. Each statement would cost time and money. Instead of taking too many measurements on each square meter, we propose to reduce the number of measurements and then interpolate the data over the entire space map. This problem gave rise to the so-called kriging technique.
 
 A first idea would be to interpolate deterministically by linear, polynomial interpolation. This method raises several problems. It will be impossible by mathematical formalism to quantify uncertainty. Indeed, the deterministic variables do not make it possible to estimate potential/unforeseeable variations. For this reason, an alternative proposes a stochastic interpolation.
 
@@ -89,21 +89,13 @@ Kriging consists in creating a linear estimator from measurements already made b
 The estimator noted $\hat{Y}$ then : $\hat{Y}=\sum_{i=1}^{n}\lambda_i Y_i$ where $\lambda_i$ are scalar values associated to each $Y_i$.
 
 This estimator has several advantages. It is the best linear unbiased predictor. This means it minimizes the variance of errors $Var[\hat{Y}-Y]^2$, it is a linear combination of the measures $Y_i$ and it is unbiased $E[\hat{Y}-Y]=0$.
-\\
-\\
-(1)Also, $\hat{Y}$ admits the perfect values at the $Y_i$ measures.
-\\
-\\
-(2)To infinity the points do not bring any more information on the result.
-\\
-\\
-(3)$\sum_{i=1}^{n}\lambda_i=1$
-\\
-\\
-(4)If there are many values in a given region then the weights are low. This is because each point has a greater impact on areas that is close to it and less on remote areas where information is shared between a lot of data points.
-\\
-\\
-(5)In areas where there is little data, kriging reflects an estimate of the average. Indeed the values influence in a roughly equivalent way on the very distant points.
+\begin{enumerate}
+\item Also, $\hat{Y}$ admits the perfect values at the $Y_i$ measures.
+\item To infinity the points do not bring any more information on the result.
+\item The estimator is a convex combinaison of the measures : $\sum_{i=1}^{n}\lambda_i=1$
+\item If there are many values in a given region then the weights are low. This is because each point has a greater impact on areas that is close to it and less on remote areas where information is shared between a lot of data points.
+\item In areas where there is little data, kriging reflects an estimate of the average. Indeed the values influence in a roughly equivalent way on the very distant points.
+\end{enumerate}
 
 \subsubsection{Ordinary kriging solving system}
 We place ourselves in the framework of a stationary random function. Thus:
@@ -121,7 +113,7 @@ Then, $$\mu \sum_{i=1}^{n}\lambda_i = \mu$$
 If we don't know the value of $\mu$, we need to have $$\sum_{i=1}^{n}\lambda_i=1$$
 
 The second condition on the minimal variance gives : 
-$$ (\lambda_1,\ldots,\lambda_n)=argmin_{\sum \lambda_i=1 } Var(\hat{Y}_0-Y_0)$$
+$$ (\lambda_1,\ldots,\lambda_n)= \arg\min_{\sum \lambda_i=1} Var(\hat{Y}_0-Y_0)$$
 
 We solve this convex optimization problem using the following lagrangian :
 

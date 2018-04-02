@@ -34,14 +34,15 @@ class Analyse:
         self.corners = corners  # ([min(X1), min(X2)], [max(X1), max(X2)])
         self.init_size = init_size  # training sample size
         # indim = len(corners[0])  # inputs dim
-        plabels = ['Ks', 'Q']
-        self.space = Space(self.corners, self.init_size, plabels=plabels)
+        self.plabels = ['Ks', 'Q']
+        self.space = Space(self.corners, self.init_size, plabels=self.plabels)
         # Build the learning sample
         self.x_train = np.array(self.space.sampling(self.init_size, 'halton'))
         self.y_train = fl(self.x_train,self.f)
         if self.verbose>=1:
             print(repr(self.space))
-        self.space.write(self.fname+'/space-values.dat')
+        # self.space.write(self.fname+'/space-values.dat')
+        self.space.write(self.fname)
     def test(self, test_size=1000, dists=['Uniform(15., 60.)','Normal(4035., 400.)']):
         # Build the test sample
         if self.verbose>=1:
@@ -58,7 +59,7 @@ class Analyse:
         if self.verbose>=1:
             print('\nConstructing Kriging surrogate model...')
         #k_predictor = SurrogateModel('kriging', corners, init_size, global_optimizer=False)
-        k_predictor = SurrogateModel('kriging', self.corners, global_optimizer=False)
+        k_predictor = SurrogateModel('kriging', self.corners, max_points_nb=1000, plabels=self.plabels, global_optimizer=False)
         k_predictor.fit(self.x_train, self.y_train)
         y_pred_krig, _ = k_predictor(self.x_test)
 
@@ -73,7 +74,7 @@ class Analyse:
         # UQ
         if self.verbose>=1:
             print('\nDoing UQ...')
-        k_uq = UQ(k_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', xdata=self.curv_abs, fname=self.fname+'/uqK')
+        k_uq = UQ(k_predictor, dists=self.dists, nsample=1000, plabels=self.plabels, xlabel='s(km)', flabel='H(Ks,Q)', xdata=self.curv_abs, fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         if self.verbose>=1:
             print('Sobol indices: '+str(k_sobol))
@@ -104,7 +105,7 @@ class Analyse:
             pc_predictor.fit(self.x_train, self.y_train)
             y_pred_pc = pc_predictor.evaluate(self.x_test)
         else:
-            pc_predictor = batman.surrogate.SurrogateModel('LS', self.corners, self.init_size, strategy='LS', degree=self.degree, distributions=self.dists_ot)
+            pc_predictor = batman.surrogate.SurrogateModel('LS', self.corners, n_samples=self.init_size, strategy='LS', degree=self.degree, distributions=self.dists_ot)
             pc_predictor.fit(self.x_train, self.y_train)
             y_pred_pc, _ = pc_predictor(self.x_test)
 

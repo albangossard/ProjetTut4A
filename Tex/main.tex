@@ -143,13 +143,13 @@ Covariances $K_{0i}, \in {1,\ldots,n}$ even less. How can we estimate them?
 
 \subsubsection{Concepts of variogram and empirical variograms}
 
-The following function is called variogram : $$\forall i,j, \gamma(h)=Var(\^{Y}-Y)=E[|\^{Y}-Y|^2]$$
+The following function is called variogram : $$\forall i,j, \gamma(h)=Var(\hat{Y}-Y)=E[|\hat{Y}-Y|^2]$$
 
 For simplification, we assumed second order stationarity of the random function Y. So we have :
 
 $$\forall i,j, Cov(Y_i,Y_{j})=C(|i-j|)$$ only depends on the distance between i and j.
 \\
-Furthermore, $$\gamma(h)\frac{1}{2}Var(\^{Y}-Y)=\frac{1}{2}(Var(\^{Y})+Var(Y)-2Cov(\^{Y},Y))$$
+Furthermore, $$\gamma(h)\frac{1}{2}Var(\hat{Y}-Y)=\frac{1}{2}(Var(\hat{Y})+Var(Y)-2Cov(\hat{Y},Y))$$
 Then,$$\gamma(h)=C(0)-C(h)$$
 \\
 An estimator of the variogram is the empirical variogram defined as follows :

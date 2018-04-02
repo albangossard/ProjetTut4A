@@ -127,7 +127,7 @@ Using matrices we need to solve the following system :
 
 $$
 \begin{bmatrix}
-\gamma_{11}& \cdots  & K_{1j} & 1\\ \vdots & \ddots & \vdots & \vdots \\ K_{i1} & \cdots  & K_{nn} & 1 \\ 1 & \cdots & 1 & 0 
+K_{11}& \cdots  & K_{1n} & 1\\ \vdots & \ddots & \vdots & \vdots \\ K_{n1} & \cdots  & K_{nn} & 1 \\ 1 & \cdots & 1 & 0 
 \end{bmatrix} 
 \begin{bmatrix}
 \lambda_1 \\ \vdots \\ \lambda_n \\ - \mu 
@@ -136,9 +136,28 @@ $$
 \end{bmatrix}.$$
 
 where $K_{ij}=Cov(Y_i,Y_j)$
+\\\\
+The covariances $K_{ij}, \forall i,j\in {1,\ldots,n}$ are not known.
+\\
+Covariances $K_{0i}, \in {1,\ldots,n}$ even less. How can we estimate them?
 
-Travail à faire ensuite : finir partie krigeage en ajoutant la variance obtenue. Peut-être donner un estimateur du variogramme. 
+\subsubsection{Concepts of variogram and empirical variograms}
 
+The following function is called variogram : $$\forall i,j, \gamma(h)=Var(\^{Y}-Y)=E[|\^{Y}-Y|^2]$$
+
+For simplification, we assumed second order stationarity of the random function Y. So we have :
+
+$$\forall i,j, Cov(Y_i,Y_{j})=C(|i-j|)$$ only depends on the distance between i and j.
+\\
+Furthermore, $$\gamma(h)\frac{1}{2}Var(\^{Y}-Y)=\frac{1}{2}(Var(\^{Y})+Var(Y)-2Cov(\^{Y},Y))$$
+Then,$$\gamma(h)=C(0)-C(h)$$
+\\
+An estimator of the variogram is the empirical variogram defined as follows :
+
+$$\gamma(h)=\frac{1}{2} \frac{1}{N} \sum_{i=1}^{N} (Y_i - Y_{i+h})^2$$
+\\
+BATMAN assumes an exponential shape model: 
+$$C(h)=\left(1- \exp{\left(-\frac{h}{r}\right)}\right)$$
 
 
 Introduisons quelques outils statistiques :

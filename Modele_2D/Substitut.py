@@ -81,14 +81,14 @@ class Substitut:
     # def predictK(self,x_test):
     def analysisK(self):
         # UQ
-        """if self.verbose>=1:
+        if self.verbose>=1:
             print('\nDoing UQ...')
         k_uq = UQ(self.k_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
-        k_sobol = k_uq.sobol()"""
+        k_sobol = k_uq.sobol()
         # second, first, total
-        """if self.verbose>=1:
+        if self.verbose>=1:
             print('Sobol indices: '+str(k_sobol))
-        k_uq.error_propagation()"""
+        k_uq.error_propagation()
 
         # Visualization
         if self.verbose>=1:

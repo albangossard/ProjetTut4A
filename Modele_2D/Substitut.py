@@ -105,3 +105,26 @@ class Substitut:
                          fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
                          feat_order=[1, 2], ticks_nbr=5, doe=self.x_train,
                          fname=self.fname+'/resp_surface_krig')
+
+
+def estimateLOOError(list_ks, list_q, list_h, list_h_pred, verbose=0):
+    list_err=[]
+    err=0.
+    for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
+        list_ks_tmp=list_ks[:]
+        list_q_tmp=list_q[:]
+        list_h_tmp=list_h[:]
+        ks=float(list_ks_tmp.pop(i))
+        q=float(list_q_tmp.pop(i))
+        h=float(list_h_tmp.pop(i))
+        x_train,y_train=parser2(list_ks_tmp,list_q_tmp,list_h_tmp)
+        x_test=[[ks,q]]
+
+        if verbose:
+            print("y_pred="+str(list_h_pred[i])+"\t h="+str(h)+"\t err(%)="+str((list_h_pred[i]-h)/h))
+        err+=(list_h_pred[i]-h)**2.
+        list_err.append((list_h_pred[i]-h)/h)
+    err/=len(list_h)
+    if verbose:
+        print("err="+str(err))
+    return err, list_err

@@ -30,7 +30,9 @@ for i, Ks in enumerate(listKsRS):
 
 
 
-list_h_pred = np.loadtxt('LOO_list_h_pred_krig.txt')
+list_h_pred = np.loadtxt('LOO_list_h_pred_krig_choice='+str(choice)+'.txt')
+err, list_err = estimateLOOError(list_ks, list_q, list_h, list_h_pred)
+print("err="+str(err))
 
 
 

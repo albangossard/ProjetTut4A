@@ -12,6 +12,8 @@ from sklearn.metrics import (r2_score, mean_squared_error)
 
 ot.Log.Show(ot.Log.ERROR)
 
+import matplotlib.pyplot as plt
+
 def parser1(list_ks,list_q0,list_q1,list_h):
     x_train=[]
     y_train=[]
@@ -48,22 +50,31 @@ class Substitut:
             print('\nConstructing Kriging surrogate model...')
         self.k_predictor = SurrogateModel('kriging', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], global_optimizer=False)
         self.k_predictor.fit(self.x_train, self.y_train)
+    def buildPC(self):
+        if self.verbose>=1:
+            print('\nConstructing Polynomial Chaos (PC) surrogate model...')
+        init_size=self.x_train.shape[0]
+        P= int(np.sqrt(init_size)-1)
+        # self.pc_predictor = SurrogateModel('pc', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], sample=init_size, strategy='LS', degree=P, distributions=self.dists)
+        self.pc_predictor = SurrogateModel('pc', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], sample=init_size, strategy='LS', degree=P, distributions=self.dists)
+        self.pc_predictor.fit(self.x_train, self.y_train)
     def predictK(self,x_test):
         y_pred_krig, _ = self.k_predictor(x_test)
-        # print("y_pred_krig",y_pred_krig)
-        # print("y_pred_krig="+str(y_pred_krig[0,0]))
         return y_pred_krig
+    def predictPC(self,x_test):
+        y_pred_pc, _ = self.pc_predictor(x_test)
+        return y_pred_pc
     # def predictK(self,x_test):
     def analysisK(self):
         # UQ
-        if self.verbose>=1:
+        """if self.verbose>=1:
             print('\nDoing UQ...')
         k_uq = UQ(self.k_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
-        k_sobol = k_uq.sobol()
+        k_sobol = k_uq.sobol()"""
         # second, first, total
-        if self.verbose>=1:
+        """if self.verbose>=1:
             print('Sobol indices: '+str(k_sobol))
-        k_uq.error_propagation()
+        k_uq.error_propagation()"""
 
         # Visualization
         if self.verbose>=1:
@@ -72,8 +83,11 @@ class Substitut:
         # Response surface
         if self.verbose>=1:
             print('-> Response surface')
-        response_surface(bounds=self.corners,
+        """response_surface(bounds=self.corners,
                          fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
                          feat_order=[1, 2], ticks_nbr=5, range_cbar=[-7.193, -0.159],
+                         fname=self.fname+'/resp_surface_krig')"""
+        response_surface(bounds=self.corners,
+                         fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
+                         feat_order=[1, 2], ticks_nbr=5, doe=self.x_train,
                          fname=self.fname+'/resp_surface_krig')
-

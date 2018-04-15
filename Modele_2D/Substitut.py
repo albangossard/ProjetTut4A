@@ -83,7 +83,7 @@ class Substitut:
         # UQ
         if self.verbose>=1:
             print('\nDoing UQ...')
-        k_uq = UQ(self.k_predictor, dists=self.dists, nsample=1000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
+        k_uq = UQ(self.k_predictor, dists=self.dists, nsample=1000*0+100000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         # second, first, total
         if self.verbose>=1:

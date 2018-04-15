@@ -1,24 +1,9 @@
 from Substitut import *
 
-
-list_ks=[]
-list_q=[]
-list_h=[]
-
 choice=0
-
-with open('data2.txt') as f:
-    lines=f.readlines()
-    for line in lines:
-        tab=line.split(' ')
-        # print(tab)
-        if len(tab)==5:
-            list_ks.append(tab[0].replace('\n',''))
-            list_q.append(tab[1].replace('\n',''))
-            list_h.append(tab[2+choice].replace('\n',''))
+list_ks, list_q, list_h = reader('data2.txt', choice)
 print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
 print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
-
 
 
 corners=([15.,1500.],[45.,10000.])

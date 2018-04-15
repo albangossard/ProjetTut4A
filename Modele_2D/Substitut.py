@@ -14,6 +14,20 @@ ot.Log.Show(ot.Log.ERROR)
 
 import matplotlib.pyplot as plt
 
+def reader(fileName, choice):
+    list_ks=[]
+    list_q=[]
+    list_h=[]
+    with open(fileName) as f:
+        lines=f.readlines()
+        for line in lines:
+            tab=line.split(' ')
+            if len(tab)==5:
+                list_ks.append(tab[0].replace('\n',''))
+                list_q.append(tab[1].replace('\n',''))
+                list_h.append(tab[2+choice].replace('\n',''))
+        return list_ks, list_q, list_h
+
 def parser1(list_ks,list_q0,list_q1,list_h):
     x_train=[]
     y_train=[]

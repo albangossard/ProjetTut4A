@@ -10,6 +10,8 @@
 \usepackage{graphicx}
 \usepackage{caption,graphicx,enumitem}
 \usepackage{amsmath}
+%\usepackage{subfigure}
+\usepackage{subcaption}
 %\usepackage{titlesec}
 
 %\setcounter{secnumdepth}{4}
@@ -17,7 +19,7 @@
 
 \begin{document}
 
-\title{Study of a surrogate model for shallow water equations}
+\title{Uncertainty quantification study for the Garonne river}
 \author{Bastien Nony, Alban Gossard\\
 Institut National des Sciences Appliquées,\\
 Toulouse,\\
@@ -159,23 +161,38 @@ For both PC expansion and kriging surrogates we determine an efficient initial s
 
 %\subsubsection{Michalewicz example}
 
+\subsection{Initial sample size}
+
+Figure \ref{init_size} shows the mean square error (MSE) and the Q2 for PC and kriging surrogates with different initial sample size. One can see from figure \ref{init_size:mse} that this parameter has no impact on the mean square error for PC surrogate. The mean square error drop as the initial sample size increases for the kriging surrogate. Figure \ref{init_size:q2} exhibits that the Q2 does not vary as the initial sample size changes for the PC surrogate whereas the Q2 raises $1$ quickly for kriging surrogate. For an initial sample size of $150$, the Q2 is close to $1$ with less than $10^{-4}$.
+
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{images/init_size_mse.png}
-  \caption{Mean square error (MSE) for PC and kriging surrogates with different initial sample size.}
-  	\label{init_size_mse}
+  \begin{subfigure}{0.8\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{images/init_size_mse.png}
+	\caption{Mean square error (MSE) for PC and kriging surrogates with different initial sample size. The y-axis is in a semi-log scale.}
+	\label{init_size:mse}
+  \end{subfigure}
+  \begin{subfigure}{0.8\textwidth}
+  	\centering
+	\includegraphics[width=\textwidth]{images/init_size_q2.png}
+	\caption{Q2 for PC and kriging surrogates with different initial sample size.}
+	\label{init_size:q2}
+  \end{subfigure}
+  \caption{Q2 and MSE for PC and kriging surrogates with different initial sample size. Polynomials with a degree of 5 were used for PC surrogate.}
+  \label{init_size}
 \end{figure}
-\begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth]{images/init_size_q2.png}
-  \caption{Q2 for PC and kriging surrogates with different initial sample size.}
-  	\label{init_size_q2}
-\end{figure}
+
+
+\subsection{Degree}
+
+Figure \ref{degree} gives the MSE and the Q2 for PC surrogate with different polynomial degree. These values were also computed for kriging surrogate. It is shown on the graph with dotted lines.
+
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{images/degree.png}
-  \caption{Mean square error (MSE) and Q2 for PC surrogate in function of the degree. In dotted is given the MSE and the Q2 for kriging surrogate.}
-  	\label{init_size_q2}
+  \caption{Mean square error (MSE) and Q2 for PC surrogate in function of the degree. In dotted is given the MSE and the Q2 for kriging surrogate. The y-axis is in a semi-log scale for MSE only.}
+  	\label{degree}
 \end{figure}
 
 

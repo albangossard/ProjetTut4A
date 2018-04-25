@@ -9,7 +9,7 @@ for choice in list_choice:
     print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
 
 
-    corners=([15.,1500.],[46.,10000.])
+    corners=([17.,1600.],[45.,9900.])
 
 
     x_train,y_train=parser2(list_ks,list_q,list_h)

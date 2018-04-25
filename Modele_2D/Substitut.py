@@ -57,7 +57,8 @@ class Substitut:
         self.x_train=x_train
         self.y_train=y_train
         self.corners=corners
-        self.dists = ['Uniform(10., 23.)','Normal(3750., 400.)']
+        # self.dists = ['Uniform(10., 23.)','Normal(3750., 400.)']
+        self.dists = ['Uniform(17., 45.)','Normal(5750., 2075.)']
         # self.curv_abs=np.array([20000.])
     def buildK(self):
         if self.verbose>=1:

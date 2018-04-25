@@ -9,7 +9,7 @@ for choice in list_choice:
     print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
 
 
-    corners=([15.,1500.],[45.,10000.])
+    corners=([17.,1600.],[45.,9900.])
 
     err=0.
     list_h_pred_krig=[]

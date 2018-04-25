@@ -7,7 +7,8 @@ fname='init_size_RAPPORT'
 degree=10*0+5
 # list_init_size=[180,200,250,300]
 # list_init_size=[180,200]
-list_init_size=[50,70,100,130,150,180,200,250,300]
+# list_init_size=[50,70,100,130,150,180,200,250,300]
+list_init_size=[20,30,50,70,100,130,150,180,200,250,300]
 
 list_msePC=[]
 list_q2PC=[]

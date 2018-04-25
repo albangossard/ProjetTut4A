@@ -12,8 +12,6 @@ def gaussian(x, mu, sig):
 list_choice=[0,1,2]
 
 list_x=np.array([437454, 425697, 412291])/10000.
-list_sobolKs=[]
-list_sobolQ=[]
 for choice in list_choice:
     color=cycol.next()
     with open('sensAnalysis_choice='+str(choice)+'/uqK/pdf.json') as jsonData:

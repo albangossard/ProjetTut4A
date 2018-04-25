@@ -33,17 +33,17 @@ for choice in list_choice:
 
 
 
-    list_h_pred = np.loadtxt('LOO_list_h_pred_krig_choice='+str(choice)+'.txt')
-    err, list_err = estimateLOOError(list_ks, list_q, list_h, list_h_pred)
-    print("err="+str(err))
+    # list_h_pred = np.loadtxt('LOO_list_h_pred_krig_choice='+str(choice)+'.txt')
+    # err, list_err = estimateLOOError(list_ks, list_q, list_h, list_h_pred)
+    # print("err="+str(err))
 
 
 
     fig, ax = plt.subplots()
 
-    p = ax.pcolor(listKsRS, listQRS, hRS, cmap=plt.cm.PRGn, vmin=np.min(hRS), vmax=np.max(hRS))
+    p = ax.pcolor(listKsRS, listQRS, hRS, cmap=plt.cm.Blues, vmin=np.min(hRS), vmax=np.max(hRS))
     for ks,q,h in zip(np.array(list_ks).astype(np.float), np.array(list_q).astype(np.float), list_h):
-        ax.scatter(ks, q, c=h, cmap=plt.cm.PRGn, vmin=np.min(hRS), vmax=np.max(hRS))
+        ax.scatter(ks, q, c=h, cmap=plt.cm.Blues, vmin=np.min(hRS), vmax=np.max(hRS))
     cb = fig.colorbar(p)
     plt.xlabel('Ks')
     plt.ylabel('Q')

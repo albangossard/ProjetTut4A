@@ -42,4 +42,4 @@ for choice in list_choice:
 
     q2_loo = r2_score(list_h_val_krig, list_h_pred_krig)
     print("q2_loo="+str(q2_loo))
-    np.savetxt('LOO_q2_loo_choice='+str(choice)+'.txt', q2_loo)
+    np.savetxt('LOO_q2_loo_choice='+str(choice)+'.txt', [q2_loo])

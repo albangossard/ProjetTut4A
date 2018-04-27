@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 list_choice=[0,1,2]
+gamme=-1
 
 # indice='S'
 indice='S_T'
@@ -11,7 +12,11 @@ list_x=np.array([437454, 425697, 412291])/10000.
 list_sobolKs=[]
 list_sobolQ=[]
 for choice in list_choice:
-    with open('sensAnalysis_choice='+str(choice)+'/uqK/sensitivity.json') as jsonData:
+    if gamme==-1:
+        fileName='sensAnalysis_choice='+str(choice)+'/uqK/sensitivity.json'
+    else:
+        fileName='sensAnalysis_gamme='+str(id_gamme)+'_choice='+str(choice)+'/uqK/sensitivity.json'
+    with open(fileName) as jsonData:
         data=json.load(jsonData)
         list_sobolKs.append(data[indice+'_Ks'][0][0])
         list_sobolQ.append(data[indice+'_Q'][0][0])
@@ -24,5 +29,8 @@ plt.scatter(list_x, list_sobolQ, marker='*', label='Q')
 plt.xlabel('x (km)')
 plt.ylabel('Sobol total indices')
 plt.legend()
-plt.savefig('Sobol_indep_compare_3pts.png', dpi=200)
+if gamme==-1:
+    plt.savefig('Sobol_indep_compare_3pts.png', dpi=200)
+else:
+    plt.savefig('Sobol_indep_compare_3pts_gamme='+str(gamme)+'.png', dpi=200)
 plt.show()

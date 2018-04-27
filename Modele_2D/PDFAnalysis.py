@@ -5,16 +5,21 @@ import scipy.stats as scs
 import statsmodels.api as sm
 
 list_choice=[0,1,2]
+gamme=-1
 
-# loi='Normale'
-loi='Lognormale'
+loi='Normale'
+# loi='Lognormale'
 
 nb=10000
 uniform_distrib=np.random.uniform(size=nb)
 
 list_x=np.array([437454, 425697, 412291])/10000.
 for choice in list_choice:
-    with open('sensAnalysis_choice='+str(choice)+'/uqK/pdf.json') as jsonData:
+    if gamme==-1:
+        fileName='sensAnalysis_choice='+str(choice)+'/uqK/pdf.json'
+    else:
+        fileName='sensAnalysis_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/pdf.json'
+    with open(fileName) as jsonData:
         data=json.load(jsonData)
         xAxis = np.array(data['output'][0])
         pdf = np.array(data['PDF'][0])
@@ -33,8 +38,13 @@ for choice in list_choice:
         tab_val[i]=val
     if loi=='Lognormale':
         tab_val=np.exp(tab_val)
+    """plt.hist(tab_val, bins=50)
+    plt.show()"""
     tab_val_normalized=(tab_val-np.mean(tab_val))/np.std(tab_val)
     sm.qqplot(tab_val_normalized, line='45')
-    plt.savefig('QQplot_'+str(loi)+'_choice='+str(choice)+'.png', dpi=200)
+    if gamme==-1:
+        plt.savefig('QQplot_'+str(loi)+'_choice='+str(choice)+'.png', dpi=200)
+    else:
+        plt.savefig('QQplot_gamme='+str(gamme)+'_'+str(loi)+'_choice='+str(choice)+'.png', dpi=200)
     plt.show()
     print("kurtosis="+str(scs.kurtosis(tab_val)))

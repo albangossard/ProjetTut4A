@@ -1,10 +1,10 @@
 from Substitut import *
 from sklearn.metrics import r2_score
 
-# choice=0
 list_choice=[0,1,2]
 
 for choice in list_choice:
+    print("\n{:#^70s}".format("choice="+str(choice)))
     list_ks, list_q, list_h = reader('data2.txt', choice)
     print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
     print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))

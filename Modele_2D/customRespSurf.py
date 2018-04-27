@@ -2,18 +2,37 @@ from Substitut import *
 
 # choice=0
 list_choice=[0,1,2]
+gamme=-1*0+0
+seuil_Q_1=3000.
+seuil_Q_2=6000.
 
 for choice in list_choice:
-    list_ks, list_q, list_h = reader('data2.txt', choice)
+    if gamme==-1:
+        list_ks, list_q, list_h = reader('data2.txt', choice)
+        corners=([17.,1600.],[45.,9900.])
+    else:
+        list_gamme=np.load('gamme_choice='+str(choice)+'.npy')
+        id_gamme=gamme
+        gamme=list_gamme[id_gamme]
+        list_ks=gamme[0]
+        list_q=gamme[1]
+        list_h=gamme[2]
+        gamme=id_gamme
+        if id_gamme==0:
+            corners=([17.,1600.],[45.,seuil_Q_1])
+        elif id_gamme==1:
+            corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
+        else:
+            corners=([17.,seuil_Q_2],[45.,9900.])
     print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
     print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
 
 
-    corners=([17.,1600.],[45.,9900.])
-
-
     x_train,y_train=parser2(list_ks,list_q,list_h)
-    S=Substitut('sensAnalysis_choice='+str(choice),x_train,y_train,corners=corners)
+    if gamme==-1:
+        S=Substitut('sensAnalysis_choice='+str(choice),x_train,y_train,corners=corners)
+    else:
+        S=Substitut('sensAnalysis_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners)
     S.buildK()
     S.analysisK()
 
@@ -49,6 +68,8 @@ for choice in list_choice:
     plt.ylabel('Q')
     plt.title('h')
 
-    plt.savefig('sensAnalysis_choice='+str(choice)+'/custom_resp_surface_krig0.png',dpi=200)
-    plt.show()
-
+    if gamme==-1:
+        plt.savefig('sensAnalysis_choice='+str(choice)+'/custom_resp_surface_krig0.png',dpi=200)
+    else:
+        plt.savefig('sensAnalysis_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig0.png',dpi=200)
+    # plt.show()

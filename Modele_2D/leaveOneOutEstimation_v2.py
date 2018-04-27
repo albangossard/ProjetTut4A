@@ -37,6 +37,7 @@ for choice in list_choice:
     err/=len(list_h_val_krig)
     print("err="+str(err))
     np.savetxt('LOO_list_h_pred_krig_choice='+str(choice)+'.txt', list_h_pred_krig)
+    np.savetxt('LOO_list_h_val_krig_choice='+str(choice)+'.txt', list_h_val_krig)
     errNorm=1.-len(list_h_val_krig)*err/(np.sum((list_h_val_krig-np.mean(list_h_val_krig))**2.))
     print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 

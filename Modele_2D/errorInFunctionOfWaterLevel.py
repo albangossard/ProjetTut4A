@@ -4,8 +4,8 @@ list_choice=[0,1,2]
 gamme=-1
 seuil_Q_1=3000.
 seuil_Q_2=6000.
-# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
+dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 
 for choice in list_choice:
     if gamme==-1:

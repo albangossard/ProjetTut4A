@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 list_choice=[0,1,2]
 list_gamme=[-1,0,1,2]
-# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
+dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 
 # indice='S'
 indice='S_T'

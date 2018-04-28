@@ -4,6 +4,8 @@ from sklearn.metrics import r2_score
 list_choice=[0,1,2]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
+# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))
@@ -36,7 +38,7 @@ for choice in list_choice:
             x_test=[[ks,q]]
 
             # print("ks="+str(ks)+"\t q="+str(q))
-            S=Substitut('test',x_train,y_train,corners=corners,verbose=0)
+            S=Substitut('test',x_train,y_train,corners=corners,verbose=0, dists=dists)
             S.buildK()
             y_pred_krig=S.predictK(x_test)[0,0]
             list_h_pred_krig.append(y_pred_krig)
@@ -48,11 +50,11 @@ for choice in list_choice:
         list_h_val_krig=np.array(list_h_val_krig)
         err/=len(list_h_val_krig)
         print("err="+str(err))
-        np.savetxt('LOO_list_h_pred_krig_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred_krig)
-        np.savetxt('LOO_list_h_val_krig_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val_krig)
+        np.savetxt('postProcessingData/LOO_list_h_pred_krig_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred_krig)
+        np.savetxt('postProcessingData/LOO_list_h_val_krig_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val_krig)
         errNorm=1.-len(list_h_val_krig)*err/(np.sum((list_h_val_krig-np.mean(list_h_val_krig))**2.))
         print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 
         q2_loo = r2_score(list_h_val_krig, list_h_pred_krig)
         print("q2_loo="+str(q2_loo))
-        np.savetxt('LOO_q2_loo_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
+        np.savetxt('postProcessingData/LOO_q2_loo_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])

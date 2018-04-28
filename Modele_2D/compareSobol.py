@@ -1,11 +1,11 @@
 import json
 import numpy as np
-import matplotlib
-matplotlib.use('GTK')
 import matplotlib.pyplot as plt
 
 list_choice=[0,1,2]
 list_gamme=[-1,0,1,2]
+# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 
 # indice='S'
 indice='S_T'
@@ -17,9 +17,9 @@ for gamme in list_gamme:
     list_sobolQ=[]
     for choice in list_choice:
         if gamme==-1:
-            fileName='sensAnalysis_choice='+str(choice)+'/uqK/sensitivity.json'
+            fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uqK/sensitivity.json'
         else:
-            fileName='sensAnalysis_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/sensitivity.json'
+            fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/sensitivity.json'
         with open(fileName) as jsonData:
             data=json.load(jsonData)
             list_sobolKs.append(data[indice+'_Ks'][0][0])
@@ -34,7 +34,8 @@ for gamme in list_gamme:
     plt.ylabel('Sobol total indices')
     plt.legend()
     if gamme==-1:
-        plt.savefig('Sobol_indep_compare_3pts.png', dpi=200)
+        plt.savefig('plots/Sobol_indep_compare_3pts_'+distribName+'.png', dpi=200)
     else:
-        plt.savefig('Sobol_indep_compare_3pts_gamme='+str(gamme)+'.png', dpi=200)
+        plt.savefig('plots/Sobol_indep_compare_3pts_'+distribName+'_gamme='+str(gamme)+'.png', dpi=200)
     # plt.show()
+    plt.clf()

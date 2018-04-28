@@ -2,8 +2,8 @@ from Substitut import *
 from sklearn.metrics import r2_score
 
 list_choice=[0,1,2]
-# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
+dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))

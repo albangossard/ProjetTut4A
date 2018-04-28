@@ -15,7 +15,7 @@ for choice in list_choice:
     if gamme==-1:
         fileName='sensAnalysis_choice='+str(choice)+'/uqK/sensitivity.json'
     else:
-        fileName='sensAnalysis_gamme='+str(id_gamme)+'_choice='+str(choice)+'/uqK/sensitivity.json'
+        fileName='sensAnalysis_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/sensitivity.json'
     with open(fileName) as jsonData:
         data=json.load(jsonData)
         list_sobolKs.append(data[indice+'_Ks'][0][0])

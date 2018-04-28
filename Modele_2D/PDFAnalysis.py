@@ -33,8 +33,12 @@ for choice in list_choice:
     plt.show()
     tab_val=np.zeros(uniform_distrib.shape[0])
     for i,e in enumerate(uniform_distrib):
-        id_max=np.where(cdf<=e)[0][-1]
-        val=xAxis[id_max]
+        tab_pos=np.where(cdf<=e)[0]
+        if len(tab_pos)!=0:
+            id_max=tab_pos[-1]
+            val=xAxis[id_max]
+        else:
+            val=xAxis[0]
         tab_val[i]=val
     if loi=='Lognormale':
         tab_val=np.exp(tab_val)

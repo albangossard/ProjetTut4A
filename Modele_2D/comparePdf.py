@@ -14,11 +14,11 @@ gamme=-1
 
 list_x=np.array([437454, 425697, 412291])/10000.
 for choice in list_choice:
-    color=cycol.next()
+    color=next(cycol)
     if gamme==-1:
         fileName='sensAnalysis_choice='+str(choice)+'/uqK/pdf.json'
     else:
-        fileName='sensAnalysis_gamme='+str(id_gamme)+'_choice='+str(choice)+'/uqK/pdf.json'
+        fileName='sensAnalysis_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/pdf.json'
     with open(fileName) as jsonData:
         data=json.load(jsonData)
         xAxis = np.array(data['output'][0])

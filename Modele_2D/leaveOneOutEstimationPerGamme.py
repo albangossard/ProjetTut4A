@@ -4,8 +4,18 @@ from sklearn.metrics import r2_score
 list_choice=[0,1,2]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
-dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+
+"""a=1600.
+b=9900.
+mu=(a+b)/2.
+sigma=(b-mu)/2.
+# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
+dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']; distribName='Norm'
 # dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
+dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']; distribName='Unif'"""
+
+distribName='Norm'
+# distribName='Unif'
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))
@@ -17,10 +27,34 @@ for choice in list_choice:
         list_h=gamme[2]
         if id_gamme==0:
             corners=([17.,1600.],[45.,seuil_Q_1])
+            a=1600.
+            b=seuil_Q_1
+            if distribName=='Norm':
+                mu=(a+b)/2.
+                sigma=(b-mu)/2.
+                dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+            else:
+                dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
         elif id_gamme==1:
             corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
+            a=seuil_Q_1
+            b=seuil_Q_2
+            if distribName=='Norm':
+                mu=(a+b)/2.
+                sigma=(b-mu)/2.
+                dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+            else:
+                dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
         else:
             corners=([17.,seuil_Q_2],[45.,9900.])
+            a=seuil_Q_2
+            b=9900.
+            if distribName=='Norm':
+                mu=(a+b)/2.
+                sigma=(b-mu)/2.
+                dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+            else:
+                dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
         

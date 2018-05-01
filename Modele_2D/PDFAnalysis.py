@@ -12,6 +12,9 @@ list_loi=['Normale', 'Lognormale']
 loi='Normale'
 # loi='Lognormale'
 
+# list_x=np.array([437454, 425697, 412291])/10000.
+list_x=np.array([22., 36., 62.])
+
 nb=10000
 
 for loi in list_loi:
@@ -20,7 +23,6 @@ for loi in list_loi:
 
         uniform_distrib=np.random.uniform(size=nb)
 
-        list_x=np.array([437454, 425697, 412291])/10000.
         for choice in list_choice:
             if gamme==-1:
                 fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uqK/pdf.json'

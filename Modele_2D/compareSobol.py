@@ -10,9 +10,11 @@ dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
 # indice='S'
 indice='S_T'
 
+# list_x=np.array([437454, 425697, 412291])/10000.
+list_x=np.array([22., 36., 62.])
+
 for gamme in list_gamme:
 
-    list_x=np.array([437454, 425697, 412291])/10000.
     list_sobolKs=[]
     list_sobolQ=[]
     for choice in list_choice:
@@ -32,7 +34,7 @@ for gamme in list_gamme:
     plt.scatter(list_x, list_sobolQ, marker='*', label='Q')
     plt.xlabel('x (km)')
     plt.ylabel('Sobol total indices')
-    plt.legend()
+    plt.legend(loc=5)
     if gamme==-1:
         plt.savefig('plots/Sobol_indep_compare_3pts_'+distribName+'.png', dpi=200)
     else:

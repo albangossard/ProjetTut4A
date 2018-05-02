@@ -1,6 +1,6 @@
 import sys
 import matplotlib
-matplotlib.use('Qt5Agg')
+matplotlib.use('Agg')
 # print(matplotlib.get_backend())
 from Substitut import *
 
@@ -25,4 +25,6 @@ for choice in list_choice:
         list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
     err = np.abs(list_h_val_krig-list_h_pred_krig)
     plt.scatter(list_h_val_krig, err)
-    plt.show()
+    # plt.show()
+    plt.savefig('test.png',dpi=200)
+    plt.clf()

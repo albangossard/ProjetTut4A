@@ -1,7 +1,7 @@
 import sys
 import matplotlib
-# matplotlib.use('GTK')
-print(matplotlib.get_backend())
+matplotlib.use('Qt5Agg')
+# print(matplotlib.get_backend())
 from Substitut import *
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]

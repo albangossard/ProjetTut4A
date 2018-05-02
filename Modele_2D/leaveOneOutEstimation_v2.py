@@ -13,8 +13,7 @@ if 'N' in options:
 if 'U' in options:
     distribName = 'Unif'
 
-# list_choice=[0,1,2]
-list_choice=[0]
+list_choice=[0,1,2]
 
 if distribName=='Norm':
     dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)]

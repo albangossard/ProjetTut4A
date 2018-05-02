@@ -1,7 +1,20 @@
+import matplotlib
+matplotlib.use('Agg')
 import json
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as scs
+
+options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
+
+if 'k' in options:
+    method = 'K'
+if 'pc' in options:
+    method = 'PC'
+if 'N' in options:
+    distribName = 'Norm'
+if 'U' in options:
+    distribName = 'Unif'
 
 from itertools import cycle
 cycol = cycle('bgrcmk')
@@ -11,10 +24,7 @@ def gaussian(x, mu, sig):
 
 list_choice=[0,1,2]
 list_gamme=[-1,0,1,2]
-dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 
-# list_x=np.array([437454, 425697, 412291])/10000.
 list_x=np.array([22., 36., 62.])
 
 for gamme in list_gamme:
@@ -22,9 +32,9 @@ for gamme in list_gamme:
     for choice in list_choice:
         color=next(cycol)
         if gamme==-1:
-            fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uqK/pdf.json'
+            fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
         else:
-            fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/pdf.json'
+            fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
         with open(fileName) as jsonData:
             data=json.load(jsonData)
             xAxis = np.array(data['output'][0])
@@ -42,8 +52,8 @@ for gamme in list_gamme:
     plt.ylabel('PDF')
     plt.legend()
     if gamme==-1:
-        plt.savefig('plots/PDF_indep_compare_3pts_'+distribName+'.png', dpi=200)
+        plt.savefig('plots/PDF_indep_compare_3pts_'+method+'_'+distribName+'.png', dpi=200)
     else:
-        plt.savefig('plots/PDF_indep_compare_3pts_'+distribName+'_gamme='+str(gamme)+'.png', dpi=200)
+        plt.savefig('plots/PDF_indep_compare_3pts_'+method+'_'+distribName+'_gamme='+str(gamme)+'.png', dpi=200)
     # plt.show()
     plt.clf()

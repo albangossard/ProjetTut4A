@@ -1,21 +1,23 @@
+import sys
 from Substitut import *
 from sklearn.metrics import r2_score
 
-list_choice=[0,1,2]
+options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
+
+if 'k' in options:
+    method = 'krig'
+if 'pc' in options:
+    method = 'pc'
+if 'N' in options:
+    distribName = 'Norm'
+if 'U' in options:
+    distribName = 'Unif'
+
+# list_choice=[0,1,2]
+list_choice=[0]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
 
-"""a=1600.
-b=9900.
-mu=(a+b)/2.
-sigma=(b-mu)/2.
-# dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']; distribName='Norm'
-# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
-dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']; distribName='Unif'"""
-
-distribName='Norm'
-# distribName='Unif'
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))
@@ -84,11 +86,11 @@ for choice in list_choice:
         list_h_val_krig=np.array(list_h_val_krig)
         err/=len(list_h_val_krig)
         print("err="+str(err))
-        np.savetxt('postProcessingData/LOO_list_h_pred_krig_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred_krig)
-        np.savetxt('postProcessingData/LOO_list_h_val_krig_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val_krig)
+        np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred_krig)
+        np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val_krig)
         errNorm=1.-len(list_h_val_krig)*err/(np.sum((list_h_val_krig-np.mean(list_h_val_krig))**2.))
         print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 
         q2_loo = r2_score(list_h_val_krig, list_h_pred_krig)
         print("q2_loo="+str(q2_loo))
-        np.savetxt('postProcessingData/LOO_q2_loo_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
+        np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])

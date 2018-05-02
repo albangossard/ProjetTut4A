@@ -1,9 +1,25 @@
+import sys
 from Substitut import *
 from sklearn.metrics import r2_score
 
-list_choice=[0,1,2]
-dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
+options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
+
+if 'k' in options:
+    method = 'krig'
+if 'pc' in options:
+    method = 'pc'
+if 'N' in options:
+    distribName = 'Norm'
+if 'U' in options:
+    distribName = 'Unif'
+
+# list_choice=[0,1,2]
+list_choice=[0]
+
+if distribName=='Norm':
+    dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)]
+else:
+    dists=[ot.Uniform(17., 45.), ot.Uniform(1600., 9900.)]
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))
@@ -15,8 +31,8 @@ for choice in list_choice:
     corners=([17.,1600.],[45.,9900.])
 
     err=0.
-    list_h_pred_krig=[]
-    list_h_val_krig=[]
+    list_h_pred=[]
+    list_h_val=[]
     for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
         list_ks_tmp=list_ks[:]
         list_q_tmp=list_q[:]
@@ -28,21 +44,25 @@ for choice in list_choice:
         x_test=[[ks,q]]
 
         S=Substitut('test',x_train,y_train,corners=corners,verbose=0, dists=dists)
-        S.buildK()
-        y_pred_krig=S.predictK(x_test)[0,0]
-        list_h_pred_krig.append(y_pred_krig)
-        list_h_val_krig.append(h)
-        print("y_pred_krig="+str(y_pred_krig)+"\t h="+str(h)+"\t err(%)="+str((y_pred_krig-h)/h))
-        err+=(y_pred_krig-h)**2.
-    list_h_pred_krig=np.array(list_h_pred_krig)
-    list_h_val_krig=np.array(list_h_val_krig)
-    err/=len(list_h_val_krig)
+        if method=='krig':
+            S.buildK()
+            y_pred=S.predictK(x_test)[0,0]
+        else:
+            S.buildPC()
+            y_pred=S.predictPC(x_test)[0,0]
+        list_h_pred.append(y_pred)
+        list_h_val.append(h)
+        print("y_pred="+str(y_pred)+"\t h="+str(h)+"\t err(%)="+str((y_pred-h)/h))
+        err+=(y_pred-h)**2.
+    list_h_pred=np.array(list_h_pred)
+    list_h_val=np.array(list_h_val)
+    err/=len(list_h_val)
     print("err="+str(err))
-    np.savetxt('postProcessingData/LOO_list_h_pred_krig_'+distribName+'_choice='+str(choice)+'.txt', list_h_pred_krig)
-    np.savetxt('postProcessingData/LOO_list_h_val_krig_'+distribName+'_choice='+str(choice)+'.txt', list_h_val_krig)
-    errNorm=1.-len(list_h_val_krig)*err/(np.sum((list_h_val_krig-np.mean(list_h_val_krig))**2.))
+    np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_pred)
+    np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_val)
+    errNorm=1.-len(list_h_val)*err/(np.sum((list_h_val-np.mean(list_h_val))**2.))
     print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 
-    q2_loo = r2_score(list_h_val_krig, list_h_pred_krig)
+    q2_loo = r2_score(list_h_val, list_h_pred)
     print("q2_loo="+str(q2_loo))
-    np.savetxt('postProcessingData/LOO_q2_loo_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])
+    np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])

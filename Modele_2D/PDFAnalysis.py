@@ -1,18 +1,28 @@
+import matplotlib
+matplotlib.use('Agg')
 import json
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as scs
 import statsmodels.api as sm
 
+options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
+
+if 'k' in options:
+    method = 'K'
+if 'pc' in options:
+    method = 'PC'
+if 'N' in options:
+    distribName = 'Norm'
+if 'U' in options:
+    distribName = 'Unif'
+
 list_choice=[0,1,2]
 list_gamme=[-1,0,1,2]
-dists=['Uniform(17., 45.)','Normal(5750., 2075.)']; distribName='Norm'
-# dists=['Uniform(17., 45.)','Uniform(1600., 9900.)']; distribName='Unif'
 list_loi=['Normale', 'Lognormale']
-loi='Normale'
+# loi='Normale'
 # loi='Lognormale'
 
-# list_x=np.array([437454, 425697, 412291])/10000.
 list_x=np.array([22., 36., 62.])
 
 nb=10000
@@ -25,9 +35,9 @@ for loi in list_loi:
 
         for choice in list_choice:
             if gamme==-1:
-                fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uqK/pdf.json'
+                fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
             else:
-                fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uqK/pdf.json'
+                fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
             with open(fileName) as jsonData:
                 data=json.load(jsonData)
                 xAxis = np.array(data['output'][0])
@@ -56,9 +66,9 @@ for loi in list_loi:
             tab_val_normalized=(tab_val-np.mean(tab_val))/np.std(tab_val)
             sm.qqplot(tab_val_normalized, line='45')
             if gamme==-1:
-                plt.savefig('plots/QQplot_'+distribName+'_'+str(loi)+'_choice='+str(choice)+'.png', dpi=200)
+                plt.savefig('plots/QQplot_'+method+'_'+distribName+'_'+str(loi)+'_choice='+str(choice)+'.png', dpi=200)
             else:
-                plt.savefig('plots/QQplot_'+distribName+'_'+str(loi)+'_gamme='+str(gamme)+'_choice='+str(choice)+'.png', dpi=200)
+                plt.savefig('plots/QQplot_'+method+'_'+distribName+'_'+str(loi)+'_gamme='+str(gamme)+'_choice='+str(choice)+'.png', dpi=200)
             # plt.show()
             plt.clf()
             print("kurtosis="+str(scs.kurtosis(tab_val)))

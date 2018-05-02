@@ -1,7 +1,6 @@
 import sys
 import matplotlib
 matplotlib.use('Agg')
-# print(matplotlib.get_backend())
 from Substitut import *
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
@@ -10,11 +9,13 @@ if 'k' in options:
     method = 'krig'
 if 'pc' in options:
     method = 'pc'
+if 'N' in options:
+    distribName = 'Norm'
+if 'U' in options:
+    distribName = 'Unif'
 
 list_choice=[0,1,2]
 gamme=-1
-distribName='Norm'
-# distribName='Unif'
 
 for choice in list_choice:
     if gamme==-1:
@@ -25,6 +26,5 @@ for choice in list_choice:
         list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
     err = np.abs(list_h_val_krig-list_h_pred_krig)
     plt.scatter(list_h_val_krig, err)
-    # plt.show()
-    plt.savefig('test.png',dpi=200)
-    plt.clf()
+    plt.show()
+    # plt.clf()

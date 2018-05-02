@@ -49,7 +49,7 @@ def parser2(list_ks,list_q,list_h):
     return x_train,y_train
 
 class Substitut:
-    def __init__(self, fname, x_train, y_train, corners=([10.0, 1500.0],[23.0, 6000.0]), verbose=1, dists=['Uniform(17., 45.)','Normal(5750., 2075.)']):
+    def __init__(self, fname, x_train, y_train, corners=([10.0, 1500.0],[23.0, 6000.0]), verbose=1, dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)], dists_text=['Uniform(17., 45.)','Normal(5750., 2075.)']):
         self.verbose=verbose
         self.fname=fname
         if not os.path.exists(self.fname):
@@ -58,7 +58,9 @@ class Substitut:
         self.y_train=y_train
         self.corners=corners
         # self.dists = ['Uniform(10., 23.)','Normal(3750., 400.)']
+        # self.dists = 
         self.dists = dists
+        self.dists_text = dists_text
         # self.curv_abs=np.array([20000.])
     def buildK(self):
         if self.verbose>=1:
@@ -79,12 +81,11 @@ class Substitut:
     def predictPC(self,x_test):
         y_pred_pc, _ = self.pc_predictor(x_test)
         return y_pred_pc
-    # def predictK(self,x_test):
     def analysisK(self):
         # UQ
         if self.verbose>=1:
             print('\nDoing UQ...')
-        k_uq = UQ(self.k_predictor, dists=self.dists, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
+        k_uq = UQ(self.k_predictor, dists=self.dists_text, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         # second, first, total
         if self.verbose>=1:
@@ -106,9 +107,35 @@ class Substitut:
                          fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
                          feat_order=[1, 2], ticks_nbr=5, doe=self.x_train,
                          fname=self.fname+'/resp_surface_krig')
+    def analysisPC(self):
+        # UQ
+        if self.verbose>=1:
+            print('\nDoing UQ...')
+        pc_uq = UQ(self.pc_predictor, dists=self.dists_text, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqPC')
+        pc_sobol = pc_uq.sobol()
+        # second, first, total
+        if self.verbose>=1:
+            print('Sobol indices: '+str(pc_sobol))
+        pc_uq.error_propagation()
+
+        # Visualization
+        if self.verbose>=1:
+            print('\nDoing some visusualizations...')
+
+        # Response surface
+        if self.verbose>=1:
+            print('-> Response surface')
+        """response_surface(bounds=self.corners,
+                         fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
+                         feat_order=[1, 2], ticks_nbr=5, range_cbar=[-7.193, -0.159],
+                         fname=self.fname+'/resp_surface_krig')"""
+        response_surface(bounds=self.corners,
+                         fun=lambda x: self.pc_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
+                         feat_order=[1, 2], ticks_nbr=5, doe=self.x_train,
+                         fname=self.fname+'/resp_surface_pc')
 
 
-def estimateLOOError(list_ks, list_q, list_h, list_h_pred, verbose=0):
+"""def estimateLOOError(list_ks, list_q, list_h, list_h_pred, verbose=0):
     list_err=[]
     err=0.
     for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
@@ -128,4 +155,4 @@ def estimateLOOError(list_ks, list_q, list_h, list_h_pred, verbose=0):
     err/=len(list_h)
     if verbose:
         print("err="+str(err))
-    return err, list_err
+    return err, list_err"""

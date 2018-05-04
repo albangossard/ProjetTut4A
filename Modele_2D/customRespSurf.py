@@ -85,6 +85,15 @@ for gamme in list_gamme:
                 else:
                     dists_text=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
+        ################ TEST ################
+        corners=([17.,1600.],[45.,9900.])
+        a=1600.
+        b=9900.
+        mu=(a+b)/2.
+        sigma=(b-mu)/2.
+        dists_text=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+        dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+        ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
 

@@ -56,6 +56,13 @@ for choice in list_choice:
                 dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
             else:
                 dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+        ################ TEST ################
+        a=1600.
+        b=9900.
+        mu=(a+b)/2.
+        sigma=(b-mu)/2.
+        dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+        ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
         

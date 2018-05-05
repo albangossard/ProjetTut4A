@@ -60,7 +60,7 @@ for choice in list_choice:
     list_h_val=np.array(list_h_val)
     err/=len(list_h_val)
     print("err="+str(err))
-    if distribName=='pc':
+    if method=='pc':
         np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_pred)
         np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_val)
     else:
@@ -71,7 +71,7 @@ for choice in list_choice:
 
     q2_loo = r2_score(list_h_val, list_h_pred)
     print("q2_loo="+str(q2_loo))
-    if distribName=='pc':
+    if method=='pc':
         np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])
     else:
         np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])

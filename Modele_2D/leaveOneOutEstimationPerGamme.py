@@ -88,7 +88,7 @@ for choice in list_choice:
                 S.buildK()
                 y_pred=S.predictK(x_test)[0,0]
             else:
-                S.buildPC()
+                S.buildPC(degree)
                 y_pred=S.predictPC(x_test)[0,0]
             list_h_pred.append(y_pred)
             list_h_val.append(h)

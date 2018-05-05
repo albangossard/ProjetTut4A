@@ -57,6 +57,7 @@ for choice in list_choice:
             else:
                 dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
         ################ TEST ################
+        corners=([17.,1600.],[45.,9900.])
         a=1600.
         b=9900.
         mu=(a+b)/2.

@@ -13,6 +13,10 @@ if 'N' in options:
     distribName = 'Norm'
 if 'U' in options:
     distribName = 'Unif'
+if 'global' in options:
+    global_compare='glob'
+else:
+    global_compare=''
 
 # list_choice=[0,1,2]
 list_choice=[1]
@@ -85,13 +89,14 @@ for gamme in list_gamme:
                     dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
-        corners=([17.,1600.],[45.,9900.])
-        a=1600.
-        b=9900.
-        mu=(a+b)/2.
-        sigma=(b-mu)/2.
-        # dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
-        dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+        if global_compare=='glob':
+            corners=([17.,1600.],[45.,9900.])
+            a=1600.
+            b=9900.
+            mu=(a+b)/2.
+            sigma=(b-mu)/2.
+            # dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+            dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
         ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
@@ -99,9 +104,9 @@ for gamme in list_gamme:
 
         x_train,y_train=parser2(list_ks,list_q,list_h)
         if gamme==-1:
-            S=Substitut('sensAnalysis_'+distribName+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
+            S=Substitut('sensAnalysis_'+distribName+'_'+global_compare+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
         else:
-            S=Substitut('sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
+            S=Substitut('sensAnalysis_'+distribName+'_'+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
 
@@ -134,9 +139,9 @@ for gamme in list_gamme:
             plt.title('h')
 
             if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
             else:
-                plt.savefig('sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
             plt.clf()
 
 
@@ -169,7 +174,7 @@ for gamme in list_gamme:
             plt.title('h')
 
             if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
             else:
-                plt.savefig('sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
             plt.clf()

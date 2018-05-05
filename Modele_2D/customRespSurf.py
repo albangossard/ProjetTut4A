@@ -30,10 +30,10 @@ for gamme in list_gamme:
             if distribName=='Norm':
                 mu=(a+b)/2.
                 sigma=(b-mu)/2.
-                dists_text=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
                 dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
             else:
-                dists_text=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                 dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         else:
             data_gamme=np.load('gamme_choice='+str(choice)+'.npy')
@@ -56,10 +56,10 @@ for gamme in list_gamme:
                 if distribName=='Norm':
                     mu=(a+b)/2.
                     sigma=(b-mu)/2.
-                    dists_text=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                    dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
                     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
                 else:
-                    dists_text=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                    dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
             elif id_gamme==1:
                 corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
@@ -68,10 +68,10 @@ for gamme in list_gamme:
                 if distribName=='Norm':
                     mu=(a+b)/2.
                     sigma=(b-mu)/2.
-                    dists_text=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                    dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
                     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
                 else:
-                    dists_text=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                    dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
             else:
                 corners=([17.,seuil_Q_2],[45.,9900.])
@@ -80,10 +80,10 @@ for gamme in list_gamme:
                 if distribName=='Norm':
                     mu=(a+b)/2.
                     sigma=(b-mu)/2.
-                    dists_text=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                    dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
                     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
                 else:
-                    dists_text=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                    dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
         corners=([17.,1600.],[45.,9900.])
@@ -91,7 +91,7 @@ for gamme in list_gamme:
         b=9900.
         mu=(a+b)/2.
         sigma=(b-mu)/2.
-        dists_text=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+        # dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
         dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
         ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
@@ -100,9 +100,9 @@ for gamme in list_gamme:
 
         x_train,y_train=parser2(list_ks,list_q,list_h)
         if gamme==-1:
-            S=Substitut('sensAnalysis_'+distribName+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_text=dists_text)
+            S=Substitut('sensAnalysis_'+distribName+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
         else:
-            S=Substitut('sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_text=dists_text)
+            S=Substitut('sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
 

@@ -49,7 +49,7 @@ def parser2(list_ks,list_q,list_h):
     return x_train,y_train
 
 class Substitut:
-    def __init__(self, fname, x_train, y_train, corners=([10.0, 1500.0],[23.0, 6000.0]), verbose=1, dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)], dists_text=['Uniform(17., 45.)','Normal(5750., 2075.)']):
+    def __init__(self, fname, x_train, y_train, corners=([10.0, 1500.0],[23.0, 6000.0]), verbose=1, dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)], dists_UQ=['Uniform(17., 45.)','Normal(5750., 2075.)']):
         self.verbose=verbose
         self.fname=fname
         if not os.path.exists(self.fname):
@@ -60,7 +60,7 @@ class Substitut:
         # self.dists = ['Uniform(10., 23.)','Normal(3750., 400.)']
         # self.dists = 
         self.dists = dists
-        self.dists_text = dists_text
+        self.dists_UQ = dists_UQ
         # self.curv_abs=np.array([20000.])
     def buildK(self):
         if self.verbose>=1:
@@ -85,7 +85,7 @@ class Substitut:
         # UQ
         if self.verbose>=1:
             print('\nDoing UQ...')
-        k_uq = UQ(self.k_predictor, dists=self.dists_text, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
+        k_uq = UQ(self.k_predictor, dists=self.dists_UQ, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         # second, first, total
         if self.verbose>=1:
@@ -111,7 +111,7 @@ class Substitut:
         # UQ
         if self.verbose>=1:
             print('\nDoing UQ...')
-        pc_uq = UQ(self.pc_predictor, dists=self.dists_text, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqPC')
+        pc_uq = UQ(self.pc_predictor, dists=self.dists_UQ, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqPC')
         pc_sobol = pc_uq.sobol()
         # second, first, total
         if self.verbose>=1:

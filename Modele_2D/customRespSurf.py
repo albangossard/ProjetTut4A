@@ -17,7 +17,8 @@ if 'U' in options:
 # list_choice=[0,1,2]
 list_choice=[1]
 # list_gamme=[-1,0,1,2]
-list_gamme=[0,1,2]
+# list_gamme=[0,1,2]
+list_gamme=[-1]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
 

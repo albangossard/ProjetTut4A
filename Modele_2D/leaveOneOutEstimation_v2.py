@@ -15,7 +15,7 @@ if 'U' in options:
 
 list_choice=[0,1,2]
 
-if distribName=='pc':
+if method=='pc':
     degree = 6
 
 if distribName=='Norm':

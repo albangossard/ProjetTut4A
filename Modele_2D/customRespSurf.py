@@ -21,7 +21,7 @@ list_gamme=[0,1,2]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
 
-if distribName=='pc':
+if method=='pc':
     degree = 6
 
 for gamme in list_gamme:

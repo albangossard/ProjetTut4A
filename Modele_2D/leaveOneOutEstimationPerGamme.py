@@ -17,6 +17,8 @@ list_choice=[0,1,2]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
 
+if distribName=='pc':
+    degree = 6
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))
@@ -33,9 +35,9 @@ for choice in list_choice:
             if distribName=='Norm':
                 mu=(a+b)/2.
                 sigma=(b-mu)/2.
-                dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
             else:
-                dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         elif id_gamme==1:
             corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
             a=seuil_Q_1
@@ -43,9 +45,9 @@ for choice in list_choice:
             if distribName=='Norm':
                 mu=(a+b)/2.
                 sigma=(b-mu)/2.
-                dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
             else:
-                dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         else:
             corners=([17.,seuil_Q_2],[45.,9900.])
             a=seuil_Q_2
@@ -53,23 +55,23 @@ for choice in list_choice:
             if distribName=='Norm':
                 mu=(a+b)/2.
                 sigma=(b-mu)/2.
-                dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
             else:
-                dists=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
         corners=([17.,1600.],[45.,9900.])
         a=1600.
         b=9900.
         mu=(a+b)/2.
         sigma=(b-mu)/2.
-        dists=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+        dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
         ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
         
         err=0.
-        list_h_pred_krig=[]
-        list_h_val_krig=[]
+        list_h_pred=[]
+        list_h_val=[]
         for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
             list_ks_tmp=list_ks[:].tolist()
             list_q_tmp=list_q[:].tolist()
@@ -82,22 +84,33 @@ for choice in list_choice:
 
             # print("ks="+str(ks)+"\t q="+str(q))
             S=Substitut('test',x_train,y_train,corners=corners,verbose=0, dists=dists)
-            S.buildK()
-            y_pred_krig=S.predictK(x_test)[0,0]
-            list_h_pred_krig.append(y_pred_krig)
-            list_h_val_krig.append(h)
-            print("y_pred_krig="+str(y_pred_krig)+"\t h="+str(h)+"\t err(%)="+str((y_pred_krig-h)/h))
-            err+=(y_pred_krig-h)**2.
+            if method=='krig':
+                S.buildK()
+                y_pred=S.predictK(x_test)[0,0]
+            else:
+                S.buildPC()
+                y_pred=S.predictPC(x_test)[0,0]
+            list_h_pred.append(y_pred)
+            list_h_val.append(h)
+            print("y_pred="+str(y_pred)+"\t h="+str(h)+"\t err(%)="+str((y_pred-h)/h))
+            err+=(y_pred-h)**2.
 
-        list_h_pred_krig=np.array(list_h_pred_krig)
-        list_h_val_krig=np.array(list_h_val_krig)
-        err/=len(list_h_val_krig)
+        list_h_pred=np.array(list_h_pred)
+        list_h_val=np.array(list_h_val)
+        err/=len(list_h_val)
         print("err="+str(err))
-        np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred_krig)
-        np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val_krig)
-        errNorm=1.-len(list_h_val_krig)*err/(np.sum((list_h_val_krig-np.mean(list_h_val_krig))**2.))
+        if distribName=='pc':
+            np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred)
+            np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val)
+        else:
+            np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred)
+            np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val)
+        errNorm=1.-len(list_h_val)*err/(np.sum((list_h_val-np.mean(list_h_val))**2.))
         print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 
-        q2_loo = r2_score(list_h_val_krig, list_h_pred_krig)
+        q2_loo = r2_score(list_h_val, list_h_pred)
         print("q2_loo="+str(q2_loo))
-        np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
+        if distribName=='pc':
+            np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
+        else:
+            np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])

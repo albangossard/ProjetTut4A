@@ -15,6 +15,9 @@ if 'U' in options:
 
 list_choice=[0,1,2]
 
+if distribName=='pc':
+    degree = 6
+
 if distribName=='Norm':
     dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)]
 else:
@@ -47,7 +50,7 @@ for choice in list_choice:
             S.buildK()
             y_pred=S.predictK(x_test)[0,0]
         else:
-            S.buildPC()
+            S.buildPC(degree)
             y_pred=S.predictPC(x_test)[0,0]
         list_h_pred.append(y_pred)
         list_h_val.append(h)
@@ -57,11 +60,18 @@ for choice in list_choice:
     list_h_val=np.array(list_h_val)
     err/=len(list_h_val)
     print("err="+str(err))
-    np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_pred)
-    np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_val)
+    if distribName=='pc':
+        np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_pred)
+        np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_val)
+    else:
+        np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_pred)
+        np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', list_h_val)
     errNorm=1.-len(list_h_val)*err/(np.sum((list_h_val-np.mean(list_h_val))**2.))
     print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 
     q2_loo = r2_score(list_h_val, list_h_pred)
     print("q2_loo="+str(q2_loo))
-    np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])
+    if distribName=='pc':
+        np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])
+    else:
+        np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])

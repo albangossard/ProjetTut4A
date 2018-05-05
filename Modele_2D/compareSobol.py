@@ -43,8 +43,11 @@ for gamme in list_gamme:
 
     plt.scatter(list_x, list_sobolKs, marker='o', label='Ks')
     plt.scatter(list_x, list_sobolQ, marker='*', label='Q')
-    plt.xlabel('x (km)')
-    plt.ylabel('Sobol total indices')
+    plt.xlabel('curvilinear abscissa x (km)')
+    if indice=='S_T':
+        plt.ylabel('Sobol total indices')
+    else:
+        plt.ylabel('First order Sobol indices')
     plt.legend(loc=5)
     if gamme==-1:
         plt.savefig('plots/Sobol_indep_compare_3pts_'+method+'_'+distribName+'.png', dpi=200)

@@ -28,7 +28,11 @@ list_gamme=[-1,0,1,2]
 
 list_x=np.array([22., 36., 62.])
 
+nb=10000
+
 for gamme in list_gamme:
+
+    uniform_distrib=np.random.uniform(size=nb)
 
     for choice in list_choice:
         color=next(cycol)
@@ -40,10 +44,23 @@ for gamme in list_gamme:
             data=json.load(jsonData)
             xAxis = np.array(data['output'][0])
             pdf = np.array(data['PDF'][0])
-        delta=xAxis[1]-xAxis[0]
-        mean=np.sum(np.multiply(xAxis,pdf))*delta
+        
+        tab_val=np.zeros(uniform_distrib.shape[0])
+        for i,e in enumerate(uniform_distrib):
+            tab_pos=np.where(cdf<=e)[0]
+            if len(tab_pos)!=0:
+                id_max=tab_pos[-1]
+                val=xAxis[id_max]
+            else:
+                val=xAxis[0]
+            tab_val[i]=val
+        mean = np.mean(tab_val)
+        std = np.std(tab_val)
+        
+        # delta=xAxis[1]-xAxis[0]
+        # mean=np.sum(np.multiply(xAxis,pdf))*delta
         print("mean="+str(mean))
-        std=np.sqrt(np.sum(np.multiply((xAxis-mean)**2.,pdf))*delta)
+        # std=np.sqrt(np.sum(np.multiply((xAxis-mean)**2.,pdf))*delta)
         print("std="+str(std))
         xGauss=np.linspace(xAxis.min(),xAxis.max(),200)
         yGauss=gaussian(xGauss, mean, std)

@@ -67,11 +67,13 @@ class Substitut:
             print('\nConstructing Kriging surrogate model...')
         self.k_predictor = SurrogateModel('kriging', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], global_optimizer=False)
         self.k_predictor.fit(self.x_train, self.y_train)
-    def buildPC(self):
+    def buildPC(self, degree):
         if self.verbose>=1:
             print('\nConstructing Polynomial Chaos (PC) surrogate model...')
         init_size=self.x_train.shape[0]
-        P= int(np.sqrt(init_size)-1)
+        # P= int(np.sqrt(init_size)-1)
+        P=degree
+        print("P="+str(P))
         # self.pc_predictor = SurrogateModel('pc', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], sample=init_size, strategy='LS', degree=P, distributions=self.dists)
         self.pc_predictor = SurrogateModel('pc', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], sample=init_size, strategy='LS', degree=P, distributions=self.dists)
         self.pc_predictor.fit(self.x_train, self.y_train)

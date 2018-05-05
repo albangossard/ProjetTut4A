@@ -17,13 +17,24 @@ if 'U' in options:
 list_choice=[0,1,2]
 gamme=-1
 
+if distribName=='pc':
+    degree = 6
+
 for choice in list_choice:
     if gamme==-1:
-        list_h_pred_krig = np.loadtxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_choice='+str(choice)+'.txt')
-        list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_choice='+str(choice)+'.txt')
+        if distribName=='pc':
+            list_h_pred_krig = np.loadtxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt')
+            list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt')
+        else:
+            list_h_pred_krig = np.loadtxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_choice='+str(choice)+'.txt')
+            list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_choice='+str(choice)+'.txt')
     else:
-        list_h_pred_krig = np.loadtxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
-        list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
+        if distribName=='pc':
+            list_h_pred_krig = np.loadtxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
+            list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
+        else:
+            list_h_pred_krig = np.loadtxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
+            list_h_val_krig = np.loadtxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'.txt')
     err = np.abs(list_h_val_krig-list_h_pred_krig)
     plt.scatter(list_h_val_krig, err)
     plt.show()

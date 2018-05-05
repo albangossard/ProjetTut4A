@@ -21,6 +21,9 @@ list_gamme=[0,1,2]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
 
+if distribName=='pc':
+    degree = 6
+
 for gamme in list_gamme:
 
     for choice in list_choice:
@@ -45,12 +48,6 @@ for gamme in list_gamme:
             list_q=gamme[1]
             list_h=gamme[2]
             gamme=id_gamme
-            """if id_gamme==0:
-                corners=([17.,1600.],[45.,seuil_Q_1])
-            elif id_gamme==1:
-                corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
-            else:
-                corners=([17.,seuil_Q_2],[45.,9900.])"""
             if id_gamme==0:
                 corners=([17.,1600.],[45.,seuil_Q_1])
                 a=1600.
@@ -145,7 +142,7 @@ for gamme in list_gamme:
 
 
         if method=='pc':
-            S.buildPC()
+            S.buildPC(degree)
             S.analysisPC()
 
 

@@ -33,7 +33,4 @@ for choice in list_choice:
             gamme[2][0].append(ks)
             gamme[2][1].append(q)
             gamme[2][2].append(h)
-    for i in range(3):
-        for j in range(3):
-            gamme[i][j]=np.array(gamme[i][j])
     np.save('gamme_choice='+str(choice)+'.npy', gamme)

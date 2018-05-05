@@ -70,9 +70,9 @@ for choice in list_choice:
         list_h_pred_krig=[]
         list_h_val_krig=[]
         for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
-            list_ks_tmp=list_ks[:]
-            list_q_tmp=list_q[:]
-            list_h_tmp=list_h[:]
+            list_ks_tmp=list_ks[:].tolist()
+            list_q_tmp=list_q[:].tolist()
+            list_h_tmp=list_h[:].tolist()
             ks=float(list_ks_tmp.pop(i))
             q=float(list_q_tmp.pop(i))
             h=float(list_h_tmp.pop(i))

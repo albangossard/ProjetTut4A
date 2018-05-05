@@ -1,19 +1,19 @@
-python genererGamme.py
-
-python leaveOneOutEstimation_v2.py pc N
-python leaveOneOutEstimation_v2.py pc U
-python leaveOneOutEstimation_v2.py k N
-python leaveOneOutEstimation_v2.py k U
-
-python leaveOneOutEstimationPerGamme.py pc N
-python leaveOneOutEstimationPerGamme.py pc U
-python leaveOneOutEstimationPerGamme.py k N
-python leaveOneOutEstimationPerGamme.py k U
-
-python customRespSurf.py pc N
-python customRespSurf.py pc U
-python customRespSurf.py k N
-python customRespSurf.py k U
+#python genererGamme.py
+#
+#python leaveOneOutEstimation_v2.py pc N
+#python leaveOneOutEstimation_v2.py pc U
+#python leaveOneOutEstimation_v2.py k N
+#python leaveOneOutEstimation_v2.py k U
+#
+#python leaveOneOutEstimationPerGamme.py pc N
+#python leaveOneOutEstimationPerGamme.py pc U
+#python leaveOneOutEstimationPerGamme.py k N
+#python leaveOneOutEstimationPerGamme.py k U
+#
+#python customRespSurf.py pc N
+#python customRespSurf.py pc U
+#python customRespSurf.py k N
+#python customRespSurf.py k U
 
 python compareSobol.py pc N
 python compareSobol.py pc U

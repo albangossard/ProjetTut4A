@@ -45,6 +45,11 @@ for gamme in list_gamme:
             xAxis = np.array(data['output'][0])
             pdf = np.array(data['PDF'][0])
         
+        cdf = np.zeros(pdf.shape)
+        cdf[0] = pdf[0]
+        for i in range(1,pdf.shape[0]):
+            cdf[i]=cdf[i-1]+pdf[i]
+        cdf/=np.max(cdf)
         tab_val=np.zeros(uniform_distrib.shape[0])
         for i,e in enumerate(uniform_distrib):
             tab_pos=np.where(cdf<=e)[0]

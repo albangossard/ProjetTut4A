@@ -20,7 +20,8 @@ if 'U' in options:
 
 list_choice=[0,1,2]
 list_gamme=[-1,0,1,2]
-list_loi=['Normale', 'Lognormale']
+# list_loi=['Normale', 'Lognormale']
+list_loi=['Normale']
 # loi='Normale'
 # loi='Lognormale'
 

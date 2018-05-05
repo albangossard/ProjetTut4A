@@ -18,15 +18,18 @@ for choice in list_choice:
     print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
     print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
     for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
-        if q<=seuil_Q_1:
+        # if q<=seuil_Q_1:
+        if True:
             gamme[0][0].append(ks)
             gamme[0][1].append(q)
             gamme[0][2].append(h)
-        elif q<=seuil_Q_2:
+        # elif q<=seuil_Q_2:
+        if True:
             gamme[1][0].append(ks)
             gamme[1][1].append(q)
             gamme[1][2].append(h)
-        else:
+        # else:
+        if True:
             gamme[2][0].append(ks)
             gamme[2][1].append(q)
             gamme[2][2].append(h)

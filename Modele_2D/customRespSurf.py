@@ -15,13 +15,15 @@ if 'U' in options:
     distribName = 'Unif'
 if 'global' in options:
     global_compare='glob'
+    list_gamme=[0,1,2]
 else:
     global_compare=''
+    list_gamme=[-1,0,1,2]
 
 # list_choice=[0,1,2]
 list_choice=[1]
 # list_gamme=[-1,0,1,2]
-list_gamme=[0,1,2]
+# list_gamme=[0,1,2]
 seuil_Q_1=3000.
 seuil_Q_2=6000.
 

@@ -14,7 +14,7 @@ if 'N' in options:
 if 'U' in options:
     distribName = 'Unif'
 if 'global' in options:
-    global_compare='glob'
+    global_compare='_glob'
     list_gamme=[0,1,2]
 else:
     global_compare=''
@@ -91,7 +91,7 @@ for gamme in list_gamme:
                     dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
                     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
-        if global_compare=='glob':
+        if global_compare=='_glob':
             corners=([17.,1600.],[45.,9900.])
             a=1600.
             b=9900.
@@ -106,9 +106,9 @@ for gamme in list_gamme:
 
         x_train,y_train=parser2(list_ks,list_q,list_h)
         if gamme==-1:
-            S=Substitut('sensAnalysis_'+distribName+'_'+global_compare+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
+            S=Substitut('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
         else:
-            S=Substitut('sensAnalysis_'+distribName+'_'+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
+            S=Substitut('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
 
@@ -141,9 +141,9 @@ for gamme in list_gamme:
             plt.title('h')
 
             if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
             else:
-                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
             plt.clf()
 
 
@@ -176,7 +176,7 @@ for gamme in list_gamme:
             plt.title('h')
 
             if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
             else:
-                plt.savefig('sensAnalysis_'+distribName+'_'+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
             plt.clf()

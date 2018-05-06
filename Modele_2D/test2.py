@@ -54,8 +54,8 @@ for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
     y_pred_krig=S.predictK(x_test)[0,0]
     print("y_pred_krig="+str(y_pred_krig)+"\t h="+str(h)+"\t err(%)="+str((y_pred_krig-h)/h))
     err+=(y_pred_krig-h)**2.
-    """if i==5:
-        break"""
+    if i==5:
+        break
 err/=len(list_h)
 print("err="+str(err))
 

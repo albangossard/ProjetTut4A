@@ -15,9 +15,15 @@ if 'N' in options:
     distribName = 'Norm'
 if 'U' in options:
     distribName = 'Unif'
+if 'global' in options:
+    global_compare='_glob'
+    list_gamme=[0,1,2]
+else:
+    global_compare=''
+    list_gamme=[-1,0,1,2]
 
 list_choice=[0,1,2]
-list_gamme=[-1,0,1,2]
+# list_gamme=[-1,0,1,2]
 
 # indice='S'
 indice='S_T'
@@ -50,8 +56,8 @@ for gamme in list_gamme:
         plt.ylabel('First order Sobol indices')
     plt.legend(loc=5)
     if gamme==-1:
-        plt.savefig('plots/Sobol_indep_compare_3pts_'+method+'_'+distribName+'.png', dpi=200)
+        plt.savefig('plots/Sobol_indep_compare_3pts_'+method+'_'+distribName+global_compare+'.png', dpi=200)
     else:
-        plt.savefig('plots/Sobol_indep_compare_3pts_'+method+'_'+distribName+'_gamme='+str(gamme)+'.png', dpi=200)
+        plt.savefig('plots/Sobol_indep_compare_3pts_'+method+'_'+distribName+global_compare+'_gamme='+str(gamme)+'.png', dpi=200)
     # plt.show()
     plt.clf()

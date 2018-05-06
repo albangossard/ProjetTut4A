@@ -1,0 +1,73 @@
+Settings successfully imported and checked
+
+ /$$$$$$$   /$$$$$$  /$$$$$$$$ /$$      /$$  /$$$$$$  /$$   /$$
+| $$__  $$ /$$__  $$|__  $$__/| $$$    /$$$ /$$__  $$| $$$ | $$
+| $$  \ $$| $$  \ $$   | $$   | $$$$  /$$$$| $$  \ $$| $$$$| $$
+| $$$$$$$ | $$$$$$$$   | $$   | $$ $$/$$ $$| $$$$$$$$| $$ $$ $$
+| $$__  $$| $$__  $$   | $$   | $$  $$$| $$| $$__  $$| $$  $$$$
+| $$  \ $$| $$  | $$   | $$   | $$\  $ | $$| $$  | $$| $$\  $$$
+| $$$$$$$/| $$  | $$   | $$   | $$ \/  | $$| $$  | $$| $$ \  $$
+|_______/ |__/  |__/   |__/   |__/     |__/|__/  |__/|__/  \__/
+Bayesian Analysis Tool for Modelling and uncertAinty quaNtification
+
+Branch: heads/master
+Last commit: 41ca976
+Select data provider type "file"
+Created 50 samples with the halton method
+Discrepancy is 0.00085358108267
+
+----- Sampling parameter space -----
+Decomposing POD basis...
+Computed POD basis with 1 modes
+Creating predictor of kind kriging...
+Predictor created
+Model, data and space wrote.
+Wrote POD to /home/gossard/Documents/CERFACS 4A/ProjetTut4A/Etude_Michalewicz/output/surrogate/pod
+
+POD summary:
+modes filtering tolerance: 0.99
+dimension of parameter space: 2
+number of snapshots: 50
+number of data per snapshot: 1
+maximum number of modes: 100
+number of modes: 1
+modes: [ 2.727]
+
+Estimating POD quality...
+Progress |                                                    |0.0% Progress | ~                                                 |2.0% | ETA: 00:34:41 (at 0.0235449404324 it/s) Progress | -~                                                |4.0% | ETA: 00:16:59 (at 0.047089713273 it/s) Progress | --~                                               |6.0% | ETA: 00:23:30 (at 0.0333317197592 it/s) Progress | ---~                                              |8.0% | ETA: 00:17:15 (at 0.0444376885124 it/s) Progress | ----~                                             |10.0% | ETA: 00:19:28 (at 0.0385232313591 it/s) Progress | -----~                                            |12.0% | ETA: 00:16:41 (at 0.0439226482512 it/s) Progress | ------~                                           |14.0% | ETA: 00:17:55 (at 0.0399840694683 it/s) Progress | -------~                                          |16.0% | ETA: 00:15:42 (at 0.0445770108171 it/s) Progress | --------~                                         |18.0% | ETA: 00:16:30 (at 0.0414071637612 it/s) Progress | ---------~                                        |20.0% | ETA: 00:14:53 (at 0.0447760320875 it/s) Progress | ----------~                                       |22.0% | ETA: 00:15:27 (at 0.0420442265405 it/s) Progress | -----------~                                      |24.0% | ETA: 00:14:32 (at 0.0435420109529 it/s) Progress | ------------~                                     |26.0% | ETA: 00:14:12 (at 0.0434168520273 it/s) Progress | -------------~                                    |28.0% | ETA: 00:13:39 (at 0.0439559230669 it/s) Progress | --------------~                                   |30.0% | ETA: 00:13:20 (at 0.0436954317445 it/s) Progress | ---------------~                                  |32.0% | ETA: 00:12:45 (at 0.0444145473057 it/s) Progress | ----------------~                                 |34.0% | ETA: 00:12:31 (at 0.0439353749676 it/s) Progress | -----------------~                                |36.0% | ETA: 00:12:01 (at 0.0443430378469 it/s) Progress | ------------------~                               |38.0% | ETA: 00:11:22 (at 0.045397352611 it/s) Progress | -------------------~                              |40.0% | ETA: 00:11:25 (at 0.0437894503069 it/s) Progress | --------------------~                             |42.0% | ETA: 00:10:41 (at 0.0452210362579 it/s) Progress | ---------------------~                            |44.0% | ETA: 00:10:40 (at 0.0437441869752 it/s) Progress | ----------------------~                           |46.0% | ETA: 00:09:59 (at 0.045010719753 it/s) Progress | -----------------------~                          |48.0% | ETA: 00:09:44 (at 0.0444804151834 it/s) Progress | ------------------------~                         |50.0% | ETA: 00:09:11 (at 0.0452946064897 it/s) Progress | -------------------------~                        |52.0% | ETA: 00:08:50 (at 0.0452098288352 it/s) Progress | --------------------------~                       |54.0% | ETA: 00:08:30 (at 0.04504017787 it/s) Progress | ---------------------------~                      |56.0% | ETA: 00:08:15 (at 0.0444003468621 it/s) Progress | ---------------------------~                      |58.0% | ETA: 00:07:37 (at 0.0459121422776 it/s) Progress | -----------------------------~                    |60.0% | ETA: 00:07:31 (at 0.0443100915916 it/s) Progress | ------------------------------~                   |62.0% | ETA: 00:06:55 (at 0.0456752974471 it/s) Progress | -------------------------------~                  |64.0% | ETA: 00:06:46 (at 0.0442699385532 it/s) Progress | --------------------------------~                 |66.0% | ETA: 00:06:14 (at 0.045427772923 it/s) Progress | ---------------------------------~                |68.0% | ETA: 00:06:00 (at 0.0443942721248 it/s) Progress | ----------------------------------~               |70.0% | ETA: 00:05:31 (at 0.04528168334 it/s) Progress | -----------------------------------~              |72.0% | ETA: 00:05:14 (at 0.0444735979917 it/s) Progress | ------------------------------------~             |74.0% | ETA: 00:04:46 (at 0.0454295140194 it/s) Progress | -------------------------------------~            |76.0% | ETA: 00:04:28 (at 0.0447253777242 it/s) Progress | --------------------------------------~           |78.0% | ETA: 00:04:02 (at 0.0453569315278 it/s) Progress | ---------------------------------------~          |80.0% | ETA: 00:03:42 (at 0.0449052250958 it/s) Progress | ----------------------------------------~         |82.0% | ETA: 00:03:19 (at 0.0452257606622 it/s) Progress | -----------------------------------------~        |84.0% | ETA: 00:02:58 (at 0.0448058793929 it/s) Progress | ------------------------------------------~       |86.0% | ETA: 00:02:35 (at 0.0451243883348 it/s) Progress | -------------------------------------------~      |88.0% | ETA: 00:02:14 (at 0.0446684765271 it/s) Progress | --------------------------------------------~     |90.0% | ETA: 00:01:50 (at 0.0451765794877 it/s) Progress | ---------------------------------------------~    |92.0% | ETA: 00:01:29 (at 0.0449191477856 it/s) Progress | ----------------------------------------------~   |94.0% | ETA: 00:01:06 (at 0.0451809738255 it/s) Progress | -----------------------------------------------~  |96.0% | ETA: 00:00:44 (at 0.0450400541687 it/s) Progress | ------------------------------------------------~ |98.0% | ETA: 00:00:22 (at 0.0452466516144 it/s) Progress | -------------------------------------------------~ |100.0% 
+POD quality: 0.496730108442, max error location at (3.00765625, 1.5552037037037039)
+
+----- UQ module -----
+Created 1000 samples with an LHS experiment
+
+----- Sobol' indices -----
+Created 6000 samples for Sobol'
+
+----- Aggregated Sensitivity Indices -----
+-> First order confidence:
+[0.230057, 0.405266]
+[0.369942, 0.60431]
+-> Total order confidence:
+[0.414646, 0.71962]
+[0.445104, 0.709313]
+
+Aggregated_indices:
+-> Second order:
+[[ 0.     0.213]
+ [ 0.213  0.   ]]
+-> First order:
+[ 0.337  0.494]
+-> Total order:
+[ 0.574  0.596]
+
+Using function Michalewicz with d=2
+
+----- Surrogate Model Error -----
+Q2: 0.661545655773
+MSE: 0.0377177766952
+L2(sobol 2nd, 1st and total order indices error): 0.290072492442, 0.138787764225, 0.12353626996
+
+----- Uncertainty Propagation -----
+Creating Covariance/correlation and figures...
+Creating PDF and figures...
+Creating response surface...

@@ -1,10 +1,10 @@
 python genererGamme.py global
 python leaveOneOutEstimationPerGamme.py pc N global
-python compareSobol pc N global
+python compareSobol.py pc N global
 
-python genererGamme
+python genererGamme.py
 python leaveOneOutEstimationPerGamme.py pc N
-python compareSobol pc N
+python compareSobol.py pc N
 
 
 #

@@ -73,6 +73,10 @@ for choice in list_choice:
                 list_ks_tmp=list_ks[:].tolist()
                 list_q_tmp=list_q[:].tolist()
                 list_h_tmp=list_h[:].tolist()
+            else:
+                list_ks_tmp=list_ks[:]
+                list_q_tmp=list_q[:]
+                list_h_tmp=list_h[:]
             ks=float(list_ks_tmp.pop(i))
             q=float(list_q_tmp.pop(i))
             h=float(list_h_tmp.pop(i))

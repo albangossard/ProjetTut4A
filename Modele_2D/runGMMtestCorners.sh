@@ -1,9 +1,11 @@
 python genererGamme.py global
 python leaveOneOutEstimationPerGamme.py pc N global
+python customRespSurf.py pc N global
 python compareSobol.py pc N global
 
 python genererGamme.py
 python leaveOneOutEstimationPerGamme.py pc N
+python customRespSurf.py pc N
 python compareSobol.py pc N
 
 

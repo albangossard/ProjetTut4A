@@ -1,18 +1,17 @@
 import os
+import numpy as np
+from sklearn.metrics import (r2_score, mean_squared_error)
+import matplotlib.pyplot as plt
 import batman
 import openturns as ot
-import numpy as np
-from batman.functions.analytical import Channel_Flow
+# from batman.functions.analytical import Channel_Flow
 from batman.space import (Space, dists_to_ot)
 from batman.uq import UQ
 from batman.visualization import Kiviat3D, HdrBoxplot, response_surface, Tree
 from batman.surrogate import SurrogateModel
 from batman.surrogate import PC
-from sklearn.metrics import (r2_score, mean_squared_error)
 
 ot.Log.Show(ot.Log.ERROR)
-
-import matplotlib.pyplot as plt
 
 def reader(fileName, choice):
     list_ks=[]
@@ -63,12 +62,12 @@ class Substitut:
         self.dists_UQ = dists_UQ
         # self.curv_abs=np.array([20000.])
     def buildK(self):
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('\nConstructing Kriging surrogate model...')
         self.k_predictor = SurrogateModel('kriging', self.corners, max_points_nb=1000, plabels=['Ks', 'Q'], global_optimizer=False)
         self.k_predictor.fit(self.x_train, self.y_train)
     def buildPC(self, degree):
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('\nConstructing Polynomial Chaos (PC) surrogate model...')
         init_size=self.x_train.shape[0]
         # P= int(np.sqrt(init_size)-1)
@@ -85,21 +84,21 @@ class Substitut:
         return y_pred_pc
     def analysisK(self):
         # UQ
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('\nDoing UQ...')
         k_uq = UQ(self.k_predictor, dists=self.dists_UQ, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         # second, first, total
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('Sobol indices: '+str(k_sobol))
         k_uq.error_propagation()
 
         # Visualization
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('\nDoing some visusualizations...')
 
         # Response surface
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('-> Response surface')
         """response_surface(bounds=self.corners,
                          fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],
@@ -111,21 +110,21 @@ class Substitut:
                          fname=self.fname+'/resp_surface_krig')
     def analysisPC(self):
         # UQ
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('\nDoing UQ...')
         pc_uq = UQ(self.pc_predictor, dists=self.dists_UQ, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqPC')
         pc_sobol = pc_uq.sobol()
         # second, first, total
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('Sobol indices: '+str(pc_sobol))
         pc_uq.error_propagation()
 
         # Visualization
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('\nDoing some visusualizations...')
 
         # Response surface
-        if self.verbose>=1:
+        if self.verbose >= 1:
             print('-> Response surface')
         """response_surface(bounds=self.corners,
                          fun=lambda x: self.k_predictor(x)[0], flabel='H(Ks,Q)', plabels=['Ks', 'Q'],

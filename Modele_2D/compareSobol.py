@@ -33,9 +33,9 @@ for gamme in list_gamme:
     list_sobolQ=[]
     for choice in list_choice:
         if gamme==-1:
-            fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/sensitivity.json'
+            fileName='sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/uq'+method+'/sensitivity.json'
         else:
-            fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/sensitivity.json'
+            fileName='sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/sensitivity.json'
         with open(fileName) as jsonData:
             data=json.load(jsonData)
             list_sobolKs.append(data[indice+'_Ks'][0][0])

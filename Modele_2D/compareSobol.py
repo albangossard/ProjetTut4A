@@ -46,6 +46,7 @@ for gamme in list_gamme:
 
     plt.scatter(list_x, list_sobolKs, marker='o', label='Ks')
     plt.scatter(list_x, list_sobolQ, marker='*', label='Q')
+    plt.ylim(0.,1.)
     plt.xlabel('curvilinear abscissa x (km)')
     if indice=='S_T':
         plt.ylabel('Sobol total indices')

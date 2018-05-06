@@ -10,6 +10,10 @@ if 'N' in options:
     distribName = 'Norm'
 if 'U' in options:
     distribName = 'Unif'
+if 'global' in options:
+    global_compare='_glob'
+else:
+    global_compare=''
 
 list_choice=[0,1,2]
 
@@ -55,12 +59,13 @@ for choice in list_choice:
             else:
                 dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
-        corners = corner_default
-        a=lower
-        b=upper
-        mu=(a+b)/2.
-        sigma=(b-mu)/2.
-        dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+        if global_compare=='_glob':
+            corners = corner_default
+            a=lower
+            b=upper
+            mu=(a+b)/2.
+            sigma=(b-mu)/2.
+            dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
         ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
@@ -101,17 +106,17 @@ for choice in list_choice:
         err/=len(list_h_val)
         print("err="+str(err))
         if method=='pc':
-            np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred)
-            np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val)
+            np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_degree='+str(degree)+'_'+distribName+global_compare+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred)
+            np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_degree='+str(degree)+'_'+distribName+global_compare+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val)
         else:
-            np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred)
-            np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val)
+            np.savetxt('postProcessingData/LOO_list_h_pred_'+method+'_'+distribName+global_compare+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_pred)
+            np.savetxt('postProcessingData/LOO_list_h_val_'+method+'_'+distribName+global_compare+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', list_h_val)
         errNorm=1.-len(list_h_val)*err/(np.sum((list_h_val-np.mean(list_h_val))**2.))
         print("errNorm="+str(errNorm)+" \t=\t "+str(1.-errNorm))
 
         q2_loo = r2_score(list_h_val, list_h_pred)
         print("q2_loo="+str(q2_loo))
         if method=='pc':
-            np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_degree='+str(degree)+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
+            np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_degree='+str(degree)+'_'+distribName+global_compare+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
         else:
-            np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])
+            np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+global_compare+'_gamme='+str(id_gamme)+'_choice='+str(choice)+'.txt', [q2_loo])

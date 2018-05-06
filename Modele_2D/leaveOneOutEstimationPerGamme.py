@@ -12,11 +12,9 @@ if 'U' in options:
     distribName = 'Unif'
 
 list_choice=[0,1,2]
-seuil_Q_1=3000.
-seuil_Q_2=6000.
 
 if method=='pc':
-    degree = 6
+    degree = degree_default
 
 for choice in list_choice:
     print("\n{:#^70s}".format("choice="+str(choice)))
@@ -27,8 +25,8 @@ for choice in list_choice:
         list_q=gamme[1]
         list_h=gamme[2]
         if id_gamme==0:
-            corners=([17.,1600.],[45.,seuil_Q_1])
-            a=1600.
+            corners = corner_gamme0
+            a=lower
             b=seuil_Q_1
             if distribName=='Norm':
                 mu=(a+b)/2.
@@ -37,7 +35,7 @@ for choice in list_choice:
             else:
                 dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         elif id_gamme==1:
-            corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
+            corners = corner_gamme1
             a=seuil_Q_1
             b=seuil_Q_2
             if distribName=='Norm':
@@ -47,9 +45,9 @@ for choice in list_choice:
             else:
                 dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         else:
-            corners=([17.,seuil_Q_2],[45.,9900.])
+            corners = corner_gamme2
             a=seuil_Q_2
-            b=9900.
+            b=upper
             if distribName=='Norm':
                 mu=(a+b)/2.
                 sigma=(b-mu)/2.
@@ -57,9 +55,9 @@ for choice in list_choice:
             else:
                 dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
-        corners=([17.,1600.],[45.,9900.])
-        a=1600.
-        b=9900.
+        corners = corner_default
+        a=lower
+        b=upper
         mu=(a+b)/2.
         sigma=(b-mu)/2.
         dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]

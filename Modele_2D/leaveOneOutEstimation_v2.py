@@ -14,7 +14,7 @@ if 'U' in options:
 list_choice=[0,1,2]
 
 if method=='pc':
-    degree = 6
+    degree = degree_default
 
 if distribName=='Norm':
     dists=[ot.Uniform(17., 45.), ot.Normal(5750., 2075.)]
@@ -28,7 +28,7 @@ for choice in list_choice:
     print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))
 
 
-    corners=([17.,1600.],[45.,9900.])
+    corners = corner_default
 
     err=0.
     list_h_pred=[]

@@ -20,19 +20,10 @@ list_choice=[0,1,2]
 list_gamme=[-1,0,1,2]
 # list_loi=['Normale', 'Lognormale']
 list_loi=['Normale']
-# loi='Normale'
-# loi='Lognormale'
-
-list_x=np.array([22., 36., 62.])
-
-nb=10000
 
 for loi in list_loi:
-
     for gamme in list_gamme:
-
-        uniform_distrib=np.random.uniform(size=nb)
-
+        uniform_distrib=np.random.uniform(size=nb_pts_generation_distrib)
         for choice in list_choice:
             if gamme==-1:
                 fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
@@ -66,9 +57,8 @@ for loi in list_loi:
             tab_val_normalized=(tab_val-np.mean(tab_val))/np.std(tab_val)
             sm.qqplot(tab_val_normalized, line='45')
             if gamme==-1:
-                plt.savefig('plots/QQplot_'+method+'_'+distribName+'_'+str(loi)+'_choice='+str(choice)+'.png', dpi=200)
+                plt.savefig('plots/QQplot_'+method+'_'+distribName+'_'+str(loi)+'_choice='+str(choice)+'.png', dpi=dpi_plot)
             else:
-                plt.savefig('plots/QQplot_'+method+'_'+distribName+'_'+str(loi)+'_gamme='+str(gamme)+'_choice='+str(choice)+'.png', dpi=200)
-            # plt.show()
+                plt.savefig('plots/QQplot_'+method+'_'+distribName+'_'+str(loi)+'_gamme='+str(gamme)+'_choice='+str(choice)+'.png', dpi=dpi_plot)
             plt.clf()
             print("kurtosis="+str(scs.kurtosis(tab_val)))

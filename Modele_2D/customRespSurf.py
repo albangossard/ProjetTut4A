@@ -22,28 +22,26 @@ else:
 list_choice=[0,1,2]
 # list_gamme=[-1,0,1,2]
 # list_gamme=[0,1,2]
-seuil_Q_1=3000.
-seuil_Q_2=6000.
 
 if method=='pc':
-    degree = 6
+    degree = degree_default
 
 for gamme in list_gamme:
 
     for choice in list_choice:
         if gamme==-1:
             list_ks, list_q, list_h = reader('data2.txt', choice)
-            corners=([17.,1600.],[45.,9900.])
-            a=1600.
-            b=9900.
-            if distribName=='Norm':
-                mu=(a+b)/2.
-                sigma=(b-mu)/2.
-                dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
-                dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
-            else:
-                dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
-                dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
+            corners = corner_default
+            a=lower
+            b=upper
+            # if distribName=='Norm':
+            #     mu=(a+b)/2.
+            #     sigma=(b-mu)/2.
+            #     dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+            #     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+            # else:
+            #     dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+            #     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         else:
             data_gamme=np.load('gamme_choice='+str(choice)+'.npy')
             id_gamme=gamme
@@ -53,46 +51,54 @@ for gamme in list_gamme:
             list_h=gamme[2]
             gamme=id_gamme
             if id_gamme==0:
-                corners=([17.,1600.],[45.,seuil_Q_1])
+                corners = corner_gamme0
                 a=1600.
                 b=seuil_Q_1
-                if distribName=='Norm':
-                    mu=(a+b)/2.
-                    sigma=(b-mu)/2.
-                    dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
-                    dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
-                else:
-                    dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
-                    dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
+                # if distribName=='Norm':
+                #     mu=(a+b)/2.
+                #     sigma=(b-mu)/2.
+                #     dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                #     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+                # else:
+                #     dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                #     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
             elif id_gamme==1:
-                corners=([17.,seuil_Q_1],[45.,seuil_Q_2])
+                corners = corner_gamme1
                 a=seuil_Q_1
                 b=seuil_Q_2
-                if distribName=='Norm':
-                    mu=(a+b)/2.
-                    sigma=(b-mu)/2.
-                    dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
-                    dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
-                else:
-                    dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
-                    dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
+                # if distribName=='Norm':
+                #     mu=(a+b)/2.
+                #     sigma=(b-mu)/2.
+                #     dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                #     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+                # else:
+                #     dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                #     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
             else:
-                corners=([17.,seuil_Q_2],[45.,9900.])
+                corners = corner_gamme2
                 a=seuil_Q_2
-                b=9900.
-                if distribName=='Norm':
-                    mu=(a+b)/2.
-                    sigma=(b-mu)/2.
-                    dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
-                    dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
-                else:
-                    dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
-                    dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
+                b=upper
+                # if distribName=='Norm':
+                #     mu=(a+b)/2.
+                #     sigma=(b-mu)/2.
+                #     dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+                #     dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+                # else:
+                #     dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+                #     dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
+        if distribName=='Norm':
+            mu=(a+b)/2.
+            sigma=(b-mu)/2.
+            dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
+            dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+        else:
+            dists_UQ=['Uniform(17., 45.)','Uniform('+str(a)+', '+str(b)+')']
+            dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
         if global_compare=='_glob':
-            corners=([17.,1600.],[45.,9900.])
-            a=1600.
-            b=9900.
+            corners = corner_default
+            a=lower
+            b=upper
             mu=(a+b)/2.
             sigma=(b-mu)/2.
             # dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
@@ -110,14 +116,11 @@ for gamme in list_gamme:
 
 
 
-
         if method=='krig':
             S.buildK()
             S.analysisK()
 
-
             ## Custom response surface for K
-            nPtsRespSurf = 50*0+20
             listKsRS = np.linspace(corners[0][0], corners[1][0], nPtsRespSurf)
             listQRS = np.linspace(corners[0][1], corners[1][1], nPtsRespSurf)
             LKs, LQ = np.meshgrid(listKsRS, listQRS)
@@ -127,7 +130,6 @@ for gamme in list_gamme:
                     x_test = [[Ks, Q]]
                     hRS[j,i] = S.predictK(x_test)[0,0]
 
-
             fig, ax = plt.subplots()
 
             p = ax.pcolor(listKsRS, listQRS, hRS, cmap=plt.cm.Blues, vmin=np.min(hRS), vmax=np.max(hRS))
@@ -139,9 +141,9 @@ for gamme in list_gamme:
             plt.title('h')
 
             if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=dpi_plot)
             else:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=dpi_plot)
             plt.clf()
 
 
@@ -150,9 +152,7 @@ for gamme in list_gamme:
             S.buildPC(degree)
             S.analysisPC()
 
-
             ## Custom response surface for PC
-            nPtsRespSurf = 50*0+20
             listKsRS = np.linspace(corners[0][0], corners[1][0], nPtsRespSurf)
             listQRS = np.linspace(corners[0][1], corners[1][1], nPtsRespSurf)
             LKs, LQ = np.meshgrid(listKsRS, listQRS)
@@ -162,7 +162,6 @@ for gamme in list_gamme:
                     x_test = [[Ks, Q]]
                     hRS[j,i] = S.predictPC(x_test)[0,0]
 
-
             fig, ax = plt.subplots()
 
             p = ax.pcolor(listKsRS, listQRS, hRS, cmap=plt.cm.Blues, vmin=np.min(hRS), vmax=np.max(hRS))
@@ -174,7 +173,7 @@ for gamme in list_gamme:
             plt.title('h')
 
             if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=dpi_plot)
             else:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=200)
+                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=dpi_plot)
             plt.clf()

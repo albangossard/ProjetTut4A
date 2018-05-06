@@ -3,6 +3,8 @@ matplotlib.use('Agg')
 from config import *
 import json
 import scipy.stats as scs
+from itertools import cycle
+cycol = cycle('bgrcmk')
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
 
@@ -15,23 +17,14 @@ if 'N' in options:
 if 'U' in options:
     distribName = 'Unif'
 
-from itertools import cycle
-cycol = cycle('bgrcmk')
+list_choice=[0,1,2]
+list_gamme=[-1,0,1,2]
 
 def gaussian(x, mu, sig):
     return np.exp(-(x-mu)**2./(2.*sig**2.))/(sig*np.sqrt(2.*np.pi))
 
-list_choice=[0,1,2]
-list_gamme=[-1,0,1,2]
-
-list_x=np.array([22., 36., 62.])
-
-nb=10000
-
 for gamme in list_gamme:
-
-    uniform_distrib=np.random.uniform(size=nb)
-
+    uniform_distrib=np.random.uniform(size=nb_pts_generation_distrib)
     for choice in list_choice:
         color=next(cycol)
         if gamme==-1:
@@ -60,10 +53,7 @@ for gamme in list_gamme:
         mean = np.mean(tab_val)
         std = np.std(tab_val)
         
-        # delta=xAxis[1]-xAxis[0]
-        # mean=np.sum(np.multiply(xAxis,pdf))*delta
         print("mean="+str(mean))
-        # std=np.sqrt(np.sum(np.multiply((xAxis-mean)**2.,pdf))*delta)
         print("std="+str(std))
         xGauss=np.linspace(xAxis.min(),xAxis.max(),200)
         yGauss=gaussian(xGauss, mean, std)
@@ -73,8 +63,7 @@ for gamme in list_gamme:
     plt.ylabel('PDF')
     plt.legend()
     if gamme==-1:
-        plt.savefig('plots/PDF_indep_compare_3pts_'+method+'_'+distribName+'.png', dpi=200)
+        plt.savefig('plots/PDF_indep_compare_3pts_'+method+'_'+distribName+'.png', dpi=dpi_plot)
     else:
-        plt.savefig('plots/PDF_indep_compare_3pts_'+method+'_'+distribName+'_gamme='+str(gamme)+'.png', dpi=200)
-    # plt.show()
+        plt.savefig('plots/PDF_indep_compare_3pts_'+method+'_'+distribName+'_gamme='+str(gamme)+'.png', dpi=dpi_plot)
     plt.clf()

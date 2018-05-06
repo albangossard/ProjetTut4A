@@ -12,12 +12,20 @@ if 'N' in options:
     distribName = 'Norm'
 if 'U' in options:
     distribName = 'Unif'
+if 'g0' in options:
+    gamme=0
+elif 'g1' in options:
+    gamme=1
+elif 'g2' in options:
+    gamme=2
+else:
+    gamme=-1
 
 list_choice=[0,1,2]
-gamme=-1
+# gamme=-1
 
 if method=='pc':
-    degree = 6
+    degree = degree_default
 
 for choice in list_choice:
     if gamme==-1:

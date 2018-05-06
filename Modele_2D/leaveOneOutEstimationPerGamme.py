@@ -69,9 +69,10 @@ for choice in list_choice:
         list_h_pred=[]
         list_h_val=[]
         for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
-            list_ks_tmp=list_ks[:].tolist()
-            list_q_tmp=list_q[:].tolist()
-            list_h_tmp=list_h[:].tolist()
+            if list_ks is not list:
+                list_ks_tmp=list_ks[:].tolist()
+                list_q_tmp=list_q[:].tolist()
+                list_h_tmp=list_h[:].tolist()
             ks=float(list_ks_tmp.pop(i))
             q=float(list_q_tmp.pop(i))
             h=float(list_h_tmp.pop(i))

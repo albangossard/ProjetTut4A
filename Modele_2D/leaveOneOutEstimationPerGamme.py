@@ -69,7 +69,7 @@ for choice in list_choice:
         list_h_pred=[]
         list_h_val=[]
         for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
-            if list_ks is not list:
+            if type(list_ks).__module__ == np.__name__:
                 list_ks_tmp=list_ks[:].tolist()
                 list_q_tmp=list_q[:].tolist()
                 list_h_tmp=list_h[:].tolist()

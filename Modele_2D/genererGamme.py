@@ -1,5 +1,4 @@
-from Substitut import *
-from sklearn.metrics import r2_score
+from config import *
 
 list_choice=[0,1,2]
 seuil_Q_1=3000.

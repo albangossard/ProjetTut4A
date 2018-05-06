@@ -1,9 +1,7 @@
-import sys
 import matplotlib
 matplotlib.use('Agg')
+from config import *
 import json
-import numpy as np
-import matplotlib.pyplot as plt
 import scipy.stats as scs
 import statsmodels.api as sm
 

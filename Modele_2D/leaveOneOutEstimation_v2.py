@@ -1,6 +1,4 @@
-import sys
-from Substitut import *
-from sklearn.metrics import r2_score
+from config import *
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
 

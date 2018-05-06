@@ -1,7 +1,6 @@
-import sys
 import matplotlib
 matplotlib.use('Agg')
-from Substitut import *
+from config import *
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
 

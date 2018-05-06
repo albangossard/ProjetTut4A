@@ -1,9 +1,7 @@
-import sys
 import matplotlib
 matplotlib.use('Agg')
+from config import *
 import json
-import numpy as np
-import matplotlib.pyplot as plt
 import scipy.stats as scs
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]

@@ -17,11 +17,9 @@ if 'global' in options:
     list_gamme=[0,1,2]
 else:
     global_compare=''
-    # list_gamme=[-1,0,1,2]
-    list_gamme=[-1]
+    list_gamme=[-1,0,1,2]
 
-# list_choice=[0,1,2]
-list_choice=[0]
+list_choice=[0,1,2]
 
 if method=='pc':
     degree = degree_default
@@ -83,54 +81,12 @@ for gamme in list_gamme:
             S=Substitut('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
-        list_ks = np.array(list_ks).astype(np.float)
-        list_q = np.array(list_q).astype(np.float)
-        list_h = np.array(list_h).astype(np.float)
-
 
         if method=='krig':
             S.buildK()
-
-            ## Custom response surface for K
-            fig, ax = plt.subplots()
-
-            for ks,q,h in zip(list_ks, list_q, list_h):
-                x_test = [[ks, q]]
-                hPred = S.predictK(x_test)[0,0]
-                err=np.abs((h-hPred)/h)
-                print("err="+str(err))
-                p = ax.scatter(ks, q, c=h, s=err*100000, cmap=plt.cm.autumn, vmin=np.min(list_h), vmax=np.max(list_h))
-            cb = fig.colorbar(p)
-            plt.xlabel('Ks')
-            plt.ylabel('Q')
-            plt.title('h')
-
-            if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=dpi_plot)
-            else:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_krig.png',dpi=dpi_plot)
-            plt.clf()
+            S.analysisK()
 
 
         if method=='pc':
             S.buildPC(degree)
-
-            ## Custom response surface for PC
-            fig, ax = plt.subplots()
-
-            for ks,q,h in zip(list_ks, list_q, list_h):
-                x_test = [[ks, q]]
-                hPred = S.predictPC(x_test)[0,0]
-                err=np.abs((h-hPred)/h)
-                print("err="+str(err))
-                p = ax.scatter(ks, q, c=h, s=err*100000, cmap=plt.cm.autumn, vmin=np.min(list_h), vmax=np.max(list_h))
-            cb = fig.colorbar(p)
-            plt.xlabel('Ks')
-            plt.ylabel('Q')
-            plt.title('h')
-
-            if gamme==-1:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=dpi_plot)
-            else:
-                plt.savefig('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=dpi_plot)
-            plt.clf()
+            S.analysisPC()

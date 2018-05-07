@@ -15,6 +15,6 @@ degree_default = 6
 nb_pts_generation_distrib = 10000
 list_x=np.array([22., 36., 62.])
 
-### Paramètres d'affichage
+### Parametres d'affichage
 nPtsRespSurf = 20
 dpi_plot = 200

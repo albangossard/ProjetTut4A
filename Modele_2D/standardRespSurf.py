@@ -81,7 +81,6 @@ for gamme in list_gamme:
             S=Substitut('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
-
         if method=='krig':
             S.buildK()
             S.analysisK()

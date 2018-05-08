@@ -96,7 +96,7 @@ for gamme in list_gamme:
                 x_test = [[ks, q]]
                 hPred = S.predictK(x_test)[0,0]
                 err=np.abs((h-hPred)/h)
-                print("err="+str(err))
+                # print("err="+str(err))
                 p = ax.scatter(ks, q, c=h, s=err*100000, cmap=plt.cm.autumn, vmin=np.min(list_h), vmax=np.max(list_h))
             cb = fig.colorbar(p)
             plt.xlabel('Ks')
@@ -120,7 +120,7 @@ for gamme in list_gamme:
                 x_test = [[ks, q]]
                 hPred = S.predictPC(x_test)[0,0]
                 err=np.abs((h-hPred)/h)
-                print("err="+str(err))
+                # print("err="+str(err))
                 p = ax.scatter(ks, q, c=h, s=err*100000, cmap=plt.cm.autumn, vmin=np.min(list_h), vmax=np.max(list_h))
             cb = fig.colorbar(p)
             plt.xlabel('Ks')

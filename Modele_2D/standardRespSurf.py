@@ -20,6 +20,8 @@ else:
     list_gamme=[-1,0,1,2]
 
 list_choice=[0,1,2]
+# list_choice=[1]
+# list_gamme=[-1]
 
 if method=='pc':
     degree = degree_default

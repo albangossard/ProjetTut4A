@@ -19,9 +19,9 @@ else:
     global_compare=''
     list_gamme=[-1,0,1,2]
 
-list_choice=[0,1,2]
-# list_choice=[1]
-# list_gamme=[-1]
+# list_choice=[0,1,2]
+list_choice=[1]
+list_gamme=[-1]
 
 if method=='pc':
     degree = degree_default
@@ -83,57 +83,33 @@ for gamme in list_gamme:
             S=Substitut('sensAnalysis/sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
-        list_ks = np.array(list_ks)
-        list_q = np.array(list_q)
-        list_h = np.array(list_h)
+        list_ks = np.array(list_ks).astype(np.float)
+        list_q = np.array(list_q).astype(np.float)
+        list_h = np.array(list_h).astype(np.float)
 
 
-        ##############################
-        
+        if method=='krig':
+            S.buildK()
+        if method=='pc':
+            S.buildPC(degree)
+
         ## Custom response surface
         fig, ax = plt.subplots()
 
-        list_h_pred=[]
-        list_h_val=[]
-        list_err=[]
-        for i,(ks,q,h) in enumerate(zip(list_ks,list_q,list_h)):
-            if type(list_ks).__module__ == np.__name__:
-                list_ks_tmp=list_ks[:].tolist()
-                list_q_tmp=list_q[:].tolist()
-                list_h_tmp=list_h[:].tolist()
-            else:
-                list_ks_tmp=list_ks[:]
-                list_q_tmp=list_q[:]
-                list_h_tmp=list_h[:]
-            ks=float(list_ks_tmp.pop(i))
-            q=float(list_q_tmp.pop(i))
-            h=float(list_h_tmp.pop(i))
-            x_train,y_train=parser2(list_ks_tmp,list_q_tmp,list_h_tmp)
-            x_test=[[ks,q]]
+        list_ks=np.linspace(corners[0][0],corners[1][0])
+        list_q=np.linspace(corners[0][1],corners[1][1])
+        LIST_KS_GRID,LIST_Q_GRID=np.meshgrid(list_ks, list_q)
+        hRS=LIST_KS_GRID*0.
 
-            if gamme==-1:
-                S=Substitut('sensAnalysis/sensAnalysis_'+distribName+global_compare+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
-            else:
-                S=Substitut('sensAnalysis/sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
-            
-            if method=='krig':
-                S.buildK()
-                y_pred=S.predictK(x_test)[0,0]
-            else:
-                S.buildPC(degree)
-                y_pred=S.predictPC(x_test)[0,0]
-            list_h_pred.append(y_pred)
-            list_h_val.append(h)
-            err=np.abs((y_pred-h)/h)
-            list_err.append(err)
+        for i,ks in enumerate(list_ks):
+            for j,q in enumerate(list_q):
+                x_test = [[ks, q]]
+                if method=='krig':
+                    hRS[j,i] = S.predictK(x_test)[0,0]
+                if method=='pc':
+                    hRS[j,i] = S.predictPC(x_test)[0,0]
+        p = ax.pcolor(list_ks, list_q, hRS, cmap=plt.cm.autumn, vmin=np.min(hRS), vmax=np.max(hRS))
 
-        ratio_plot=maxSizeScatter/np.max(list_err)
-        list_ks=list_ks.astype(np.float)
-        list_q=list_q.astype(np.float)
-        list_h=list_h.astype(np.float)
-        for i,(ks,q,h,err) in enumerate(zip(list_ks,list_q,list_h,list_err)):
-            p = ax.scatter(ks, q, c=h, s=err*ratio_plot, cmap=plt.cm.autumn, vmin=np.min(list_h), vmax=np.max(list_h))
-            ax.annotate(str(np.round(err,4)), (ks, q), fontsize=6)
         cb = fig.colorbar(p)
         plt.xlabel('Ks')
         plt.ylabel('Q')
@@ -150,4 +126,3 @@ for gamme in list_gamme:
             else:
                 plt.savefig('sensAnalysis/sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice)+'/custom_resp_surface_pc.png',dpi=dpi_plot)
         plt.clf()
-        ##############################

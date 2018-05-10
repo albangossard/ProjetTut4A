@@ -26,9 +26,9 @@ for loi in list_loi:
         uniform_distrib=np.random.uniform(size=nb_pts_generation_distrib)
         for choice in list_choice:
             if gamme==-1:
-                fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
+                fileName='sensAnalysis/sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
             else:
-                fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
+                fileName='sensAnalysis/sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
             with open(fileName) as jsonData:
                 data=json.load(jsonData)
                 xAxis = np.array(data['output'][0])

@@ -76,9 +76,9 @@ for gamme in list_gamme:
 
         x_train,y_train=parser2(list_ks,list_q,list_h)
         if gamme==-1:
-            S=Substitut('sensAnalysis_'+distribName+global_compare+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
+            S=Substitut('sensAnalysis/sensAnalysis_'+distribName+global_compare+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
         else:
-            S=Substitut('sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
+            S=Substitut('sensAnalysis/sensAnalysis_'+distribName+global_compare+'_gamme='+str(gamme)+'_choice='+str(choice),x_train,y_train,corners=corners, dists=dists, dists_UQ=dists_UQ)
 
 
         if method=='krig':

@@ -25,12 +25,13 @@ def gaussian(x, mu, sig):
 
 for gamme in list_gamme:
     uniform_distrib=np.random.uniform(size=nb_pts_generation_distrib)
+    # max_inf_x=0.
     for choice in list_choice:
         color=next(cycol)
         if gamme==-1:
-            fileName='sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
+            fileName='sensAnalysis/sensAnalysis_'+distribName+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
         else:
-            fileName='sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
+            fileName='sensAnalysis/sensAnalysis_'+distribName+'_gamme='+str(gamme)+'_choice='+str(choice)+'/uq'+method+'/pdf.json'
         with open(fileName) as jsonData:
             data=json.load(jsonData)
             xAxis = np.array(data['output'][0])
@@ -59,6 +60,9 @@ for gamme in list_gamme:
         yGauss=gaussian(xGauss, mean, std)
         plt.plot(xAxis,pdf,c=color,label='x='+str(list_x[choice]))
         plt.plot(xGauss,yGauss,'.',c=color)
+        # max_inf_x=max(max_inf_x,np.min(xGauss))
+    # plt.xlim(max_inf_x,35)
+    plt.xlim(-10.,30.)
     plt.xlabel('h(Ks,Q)')
     plt.ylabel('PDF')
     plt.legend()

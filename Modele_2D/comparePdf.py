@@ -4,7 +4,6 @@ from config import *
 import json
 import scipy.stats as scs
 from itertools import cycle
-cycol = cycle('bgrcmk')
 
 options = [sys.argv[i+1] for i in range(len(sys.argv)-1)]
 
@@ -24,6 +23,7 @@ def gaussian(x, mu, sig):
     return np.exp(-(x-mu)**2./(2.*sig**2.))/(sig*np.sqrt(2.*np.pi))
 
 for gamme in list_gamme:
+    cycol = cycle('bgrcmk')
     uniform_distrib=np.random.uniform(size=nb_pts_generation_distrib)
     # max_inf_x=0.
     for choice in list_choice:

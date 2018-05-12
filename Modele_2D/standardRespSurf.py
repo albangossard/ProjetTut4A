@@ -65,6 +65,7 @@ for gamme in list_gamme:
             dists=[ot.Uniform(17., 45.), ot.Uniform(a, b)]
         ################ TEST ################
         if global_compare=='_glob':
+            print(global_compare+' mode !!!')
             corners = corner_default
             a=lower
             b=upper

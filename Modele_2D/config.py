@@ -14,7 +14,8 @@ corner_gamme2 = ([17.,seuil_Q_2],[45.,9900.])
 # degree_default = 4
 # degree_default = 6
 # degree_default = 10
-degree_default = 2
+# degree_default = 2
+degree_default = 5
 nb_pts_generation_distrib = 10000
 list_x=np.array([22., 36., 62.])
 

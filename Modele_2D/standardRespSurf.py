@@ -21,7 +21,7 @@ else:
 
 list_choice=[0,1,2]
 # list_choice=[1]
-# list_gamme=[-1]
+list_gamme=[-1]
 # list_gamme=[-1,1]
 # list_gamme=[1]
 

@@ -23,6 +23,7 @@ list_choice=[0,1,2]
 # list_choice=[1]
 # list_gamme=[-1]
 # list_gamme=[-1,1]
+# list_gamme=[1]
 
 if method=='pc':
     degree = degree_default
@@ -73,6 +74,10 @@ for gamme in list_gamme:
             sigma=(b-mu)/2.
             # dists_UQ=['Uniform(17., 45.)','Normal('+str(mu)+', '+str(sigma)+')']
             dists=[ot.Uniform(17., 45.), ot.Normal(mu, sigma)]
+        # print(dists)
+        # print(dists_UQ)
+        # print(list_ks)
+        # print(list_q)
         ######################################
         print("Ks : "+str(min(list_ks))+" \t "+str(max(list_ks)))
         print("Q : "+str(min(list_q))+" \t "+str(max(list_q)))

@@ -86,7 +86,7 @@ class Substitut:
         # UQ
         if self.verbose >= 1:
             print('\nDoing UQ...')
-        k_uq = UQ(self.k_predictor, dists=self.dists_UQ, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
+        k_uq = UQ(self.k_predictor, dists=self.dists_UQ, nsample=10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqK')
         k_sobol = k_uq.sobol()
         # second, first, total
         if self.verbose >= 1:
@@ -112,7 +112,7 @@ class Substitut:
         # UQ
         if self.verbose >= 1:
             print('\nDoing UQ...')
-        pc_uq = UQ(self.pc_predictor, dists=self.dists_UQ, nsample=1000*0+10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqPC')
+        pc_uq = UQ(self.pc_predictor, dists=self.dists_UQ, nsample=10000, plabels=['Ks', 'Q'], xlabel='s(km)', flabel='H(Ks,Q)', fname=self.fname+'/uqPC')
         pc_sobol = pc_uq.sobol()
         # second, first, total
         if self.verbose >= 1:

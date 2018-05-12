@@ -73,3 +73,9 @@ for choice in list_choice:
         np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_degree='+str(degree)+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])
     else:
         np.savetxt('postProcessingData/LOO_q2_loo_'+method+'_'+distribName+'_choice='+str(choice)+'.txt', [q2_loo])
+    
+
+    # x_train,y_train=parser2(list_ks,list_q,list_h)
+    # S=Substitut('test',x_train,y_train,corners=corners,verbose=0, dists=dists)
+    # S.buildPC(degree)
+    # print("estimate_quality="+str(S.pc_predictor.estimate_quality()[0]))

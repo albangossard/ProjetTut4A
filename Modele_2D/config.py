@@ -2,8 +2,10 @@ import sys
 from Substitut import *
 
 lower = 1600.
-seuil_Q_1=3000.
-seuil_Q_2=6000.
+# seuil_Q_1=3000.
+# seuil_Q_2=6000.
+seuil_Q_1=6000.
+seuil_Q_2=9000.
 upper = 9900.
 
 corner_default = ([17.,1600.],[45.,9900.])

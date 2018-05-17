@@ -4,8 +4,10 @@ from Substitut import *
 lower = 1600.
 # seuil_Q_1=3000.
 # seuil_Q_2=6000.
-seuil_Q_1=6000.
-seuil_Q_2=9000.
+# seuil_Q_1=6000.
+# seuil_Q_2=9000.
+seuil_Q_1=5500.*0+4000.
+seuil_Q_2=9800.*0+5500.*0+6000.*0+7000.
 upper = 9900.
 
 corner_default = ([17.,1600.],[45.,9900.])
